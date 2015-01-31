@@ -14,7 +14,7 @@ public class Line extends RotatingShape{
 	}
 
 	public void draw(JPanel panel){
-		for(int i = 0; )
+//		for(int i = 0; )
 	}
 	
 	public static void main(String[] args){

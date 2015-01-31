@@ -25,46 +25,46 @@ public abstract class RotatingShape{
 		isRotating = true;
 	}
 
-	public Color getColor() {
+	public Color getColor(){
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(Color color){
 		this.color = color;
 	}
 
-	public double getSpeed() {
+	public double getSpeed(){
 		return speed;
 	}
 
-	public void setSpeed(double speed) {
+	public void setSpeed(double speed){
 		this.speed = speed;
 	}
 
-	public double getBorderThickness() {
+	public double getBorderThickness(){
 		return borderThickness;
 	}
 
-	public void setBorderThickness(double borderThickness) {
+	public void setBorderThickness(double borderThickness){
 		this.borderThickness = borderThickness;
 	}
 
-	public boolean isRotating() {
+	public boolean isRotating(){
 		return isRotating;
 	}
 
-	public void setRotating(boolean isRotating) {
+	public void setRotating(boolean isRotating){
 		this.isRotating = isRotating;
 	}
 	
 	public void rotate(boolean clockwise){
-		
-	}
-	
-	public void stopRotation(){
-		isRotating = false;
+		double theta = speed;
+		theta += speed;
+		if(theta > 2*Math.PI)
+			theta -= 2*Math.PI;
+		else if(theta < -2*Math.PI)
+			theta += 2*Math.PI;
 	}
 	
 	public abstract void draw(JPanel panel);
-
 }
