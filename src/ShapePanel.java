@@ -13,9 +13,9 @@ import javax.swing.Timer;
 public class ShapePanel extends JComponent{
 
 	private RotatingShape shape;
-	private Color color;
-	private double speed;
-	private int thickness;
+	private Color color = new Color(153,255,204); //I set these here and used variables in the method add them to the ctor
+	private int speed = 50;
+	private int thickness = 5;
 	
 	public ShapePanel(Line line){
 		shape = line;
@@ -27,7 +27,8 @@ public class ShapePanel extends JComponent{
 	
 	public void paintComponent(Graphics g){
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke(new BasicStroke(10));
+		g2.setStroke(new BasicStroke(thickness));
+		g2.setColor(color);
 		g2.drawLine(shape.getX1(this), shape.getY1(this), shape.getX2(this), shape.getY2(this));
 	}
 
@@ -38,21 +39,20 @@ public class ShapePanel extends JComponent{
 				repaint();
 			}
 		}
-		final int DELAY = 100;
 		ActionListener listener = new UpdateListener();
-		Timer timer = new Timer(DELAY, listener);
+		Timer timer = new Timer(speed, listener);
 		timer.start();
 	}
 	
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
-		frame.setSize(500, 500);
+		frame.setSize(500, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Line b = new Line(0, true);
+		Line b = new Line(7, true);
 		ShapePanel c = new ShapePanel(b);
 		frame.add(c);
 		frame.setVisible(true);
-		c.rotate(false);
+		c.rotate(true);
 	}
 
 }
