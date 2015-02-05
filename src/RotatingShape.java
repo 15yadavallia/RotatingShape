@@ -5,50 +5,28 @@ import javax.swing.JPanel;
 
 public abstract class RotatingShape{
 
-//	private double theta;
-	private Color color;
-	private double speed;
-	private double borderThickness;
+	private double theta;
 	private boolean isRotating;
+	private final double DELTA_THETA = 0.05;
 	
-	public RotatingShape(Color color, double speed, double borderThickness, boolean isRotating){
-		this.color = color;
-		this.speed = speed;
-		this.borderThickness = borderThickness;
+	public RotatingShape(double theta, boolean isRotating){
+		this.theta = theta;
 		this.isRotating = isRotating;
 	}
 	
 	public RotatingShape(){
-		color = Color.BLACK;
-		speed = 1;
-		borderThickness = 1;
+		theta = 0;
 		isRotating = true;
 	}
 
-	public Color getColor(){
-		return color;
+	public double getTheta(){
+		return theta;
 	}
-
-	public void setColor(Color color){
-		this.color = color;
+	
+	public void setTheta(double theta){
+		this.theta = theta;
 	}
-
-	public double getSpeed(){
-		return speed;
-	}
-
-	public void setSpeed(double speed){
-		this.speed = speed;
-	}
-
-	public double getBorderThickness(){
-		return borderThickness;
-	}
-
-	public void setBorderThickness(double borderThickness){
-		this.borderThickness = borderThickness;
-	}
-
+	
 	public boolean isRotating(){
 		return isRotating;
 	}
@@ -58,13 +36,57 @@ public abstract class RotatingShape{
 	}
 	
 	public void rotate(boolean clockwise){
-		double theta = speed;
-		theta += speed;
-		if(theta > 2*Math.PI)
-			theta -= 2*Math.PI;
-		else if(theta < -2*Math.PI)
-			theta += 2*Math.PI;
+		if(clockwise)
+			theta += DELTA_THETA;
+		else
+			theta -= DELTA_THETA;
+		if(theta > 2 * Math.PI)
+			theta -= 2 * Math.PI;
+		else if(theta < 0)
+			theta += 2 * Math.PI;
 	}
 	
-	public abstract void draw(JPanel panel);
+	public int getX1(ShapePanel panel){
+		if(getTheta() <= Math.PI/4 || getTheta() >= 7*Math.PI/4)
+			return 0;
+		else if(getTheta() >= 3*Math.PI/4 && getTheta() <= 5*Math.PI/4)
+			return panel.getWidth();
+		else{
+			double radius = Math.sqrt(panel.getWidth() * panel.getWidth() + panel.getHeight() * panel.getHeight());
+			return (int)(-radius * Math.cos(getTheta()));
+		}
+	}
+	
+	public int getX2(ShapePanel panel){
+		if(getTheta() <= Math.PI/4 || getTheta() >= 7*Math.PI/4)
+			return panel.getWidth();
+		else if(getTheta() >= 3*Math.PI/4 && getTheta() <= 5*Math.PI/4)
+			return 0;
+		else{
+			double radius = Math.sqrt(panel.getWidth() * panel.getWidth() + panel.getHeight() * panel.getHeight());
+			return (int)(radius * Math.cos(getTheta()));
+		}
+	}
+	
+	public int getY1(ShapePanel panel){
+		if(getTheta() >= 5*Math.PI/4 && getTheta() <= 7*Math.PI/4)
+			return 0;
+		else if(getTheta() >= Math.PI/4 && getTheta() <= 3*Math.PI/4)
+			return panel.getHeight();
+		else{
+			double radius = Math.sqrt(panel.getWidth() * panel.getWidth() + panel.getHeight() * panel.getHeight());
+			return (int)(-radius * Math.sin(getTheta()));
+		}
+	}
+	
+	public int getY2(ShapePanel panel){
+		if(getTheta() >= 5*Math.PI/4 && getTheta() <= 7*Math.PI/4)
+			return panel.getHeight();
+		else if(getTheta() >= Math.PI/4 && getTheta() <= 3*Math.PI/4)
+			return 0;
+		else{
+			double radius = Math.sqrt(panel.getWidth() * panel.getWidth() + panel.getHeight() * panel.getHeight());
+			return (int)(radius * Math.sin(getTheta()));
+		}
+	}
 }
