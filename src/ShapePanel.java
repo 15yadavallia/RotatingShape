@@ -31,7 +31,7 @@ public class ShapePanel extends JComponent{
 		g2.setStroke(new BasicStroke(thickness));
 		g2.setColor(color);
 		if(shape instanceof Line){
-			g2.drawLine(shape.getX1(this), shape.getY1(this), shape.getX2(this), shape.getY2(this));
+			g2.drawLine(((Line)shape).getX1(this), ((Line)shape).getY1(this), ((Line)shape).getX2(this), ((Line)shape).getY2(this));
 		}
 		else if(shape instanceof RegularPolygon){
 			int[][] points = ((RegularPolygon)shape).getVertices(this);
@@ -62,7 +62,7 @@ public class ShapePanel extends JComponent{
 		JFrame frame = new JFrame();
 		frame.setSize(500, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		RegularPolygon b = new RegularPolygon(5,103,25,true);
+		Line b= new Line(2,true);
 		ShapePanel c = new ShapePanel(b);
 		Random r = new Random();
 		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
