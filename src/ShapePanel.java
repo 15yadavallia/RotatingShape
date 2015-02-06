@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -13,7 +14,7 @@ import javax.swing.Timer;
 public class ShapePanel extends JComponent{
 
 	private RotatingShape shape;
-	private Color color = new Color(153,255,204); //I set these here and used variables in the method add them to the ctor
+	private Color color;
 	private int speed = 50;
 	private int thickness = 5;
 	
@@ -31,8 +32,12 @@ public class ShapePanel extends JComponent{
 		g2.setColor(color);
 		g2.drawLine(shape.getX1(this), shape.getY1(this), shape.getX2(this), shape.getY2(this));
 	}
+	
+	public void setColor(Color c) {
+		color = c;
+	}
 
-	private void rotate(final boolean clockwise){
+	public void rotate(final boolean clockwise){
 		class UpdateListener implements ActionListener{
 			public void actionPerformed(ActionEvent event){
 				shape.rotate(clockwise);
@@ -50,6 +55,9 @@ public class ShapePanel extends JComponent{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Line b = new Line(7, true);
 		ShapePanel c = new ShapePanel(b);
+		Random r = new Random();
+		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
+		c.setColor(color);
 		frame.add(c);
 		frame.setVisible(true);
 		c.rotate(true);
