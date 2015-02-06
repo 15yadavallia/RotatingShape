@@ -7,7 +7,7 @@ public abstract class RotatingShape{
 
 	private double theta;
 	private boolean isRotating;
-	private final double DELTA_THETA = 0.13;
+	private final double DELTA_THETA = 0.06;
 	
 	public RotatingShape(double theta, boolean isRotating){
 		this.theta = theta;

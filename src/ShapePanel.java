@@ -15,10 +15,10 @@ public class ShapePanel extends JComponent{
 
 	private RotatingShape shape;
 	private Color color;
-	private int speed = 50;
+	private int speed = 1;
 	private int thickness = 5;
 	
-	public ShapePanel(Line line){
+	public ShapePanel(RotatingShape line){
 		shape = line;
 	}
 	
@@ -30,7 +30,16 @@ public class ShapePanel extends JComponent{
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setStroke(new BasicStroke(thickness));
 		g2.setColor(color);
-		g2.drawLine(shape.getX1(this), shape.getY1(this), shape.getX2(this), shape.getY2(this));
+		if(shape instanceof Line){
+			g2.drawLine(shape.getX1(this), shape.getY1(this), shape.getX2(this), shape.getY2(this));
+		}
+		else if(shape instanceof RegularPolygon){
+			int[][] points = ((RegularPolygon)shape).getVertices(this);
+			for(int i=0;i<((RegularPolygon)shape).getNumSides()-1;i++){
+				g2.drawLine(points[i][0], points[i][1], points[i+1][0], points[i+1][1]);
+			}
+			g2.drawLine(points[0][0], points[0][1], points[points.length-1][0], points[points.length-1][1]);
+		}
 	}
 	
 	public void setColor(Color c) {
@@ -53,7 +62,7 @@ public class ShapePanel extends JComponent{
 		JFrame frame = new JFrame();
 		frame.setSize(500, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Line b = new Line(7, true);
+		RegularPolygon b = new RegularPolygon(5,103,25,true);
 		ShapePanel c = new ShapePanel(b);
 		Random r = new Random();
 		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));

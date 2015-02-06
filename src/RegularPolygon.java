@@ -1,12 +1,14 @@
 import javax.swing.JFrame;
 
 
-public class RegularPolygon{
+public class RegularPolygon extends RotatingShape{
 	private int numSides;
-	private double length;
+	private double sideLength;
 	
-	public RegularPolygon(int t){
-		numSides=t;
+	public RegularPolygon(int sides, double length, double theta, boolean rotating){
+		super(theta,rotating);
+		numSides=sides;
+		sideLength= length;
 	}
 	
 	/**
@@ -27,23 +29,35 @@ public class RegularPolygon{
 	 * @return the length
 	 */
 	public double getLength() {
-		return length;
+		return sideLength;
 	}
 
 	/**
 	 * @param length the length to set
 	 */
 	public void setLength(double length) {
-		this.length = length;
+		this.sideLength = length;
 	}
 
 	public double interiorAngle(){
 		return Math.PI-2*Math.PI/numSides;
 	}
 	
-//	public void draw(Display d){
-//		
-//	}
+	public int[][] getVertices(ShapePanel panel){
+		int centerX = panel.getWidth()/2;
+		int centerY = panel.getHeight()/2;
+		int[][] ret = new int[numSides][2];
+		
+		double radius = sideLength/(2*Math.sin(Math.PI/numSides));
+		double thetaDiff = 2*Math.PI/numSides;
+		for(int i=0;i<numSides;i++){
+			double currTheta = getTheta()+i*thetaDiff;
+			ret[i][0]=(int)Math.round(radius*Math.cos(currTheta)+centerX);
+			ret[i][1]=(int)Math.round(radius*Math.sin(currTheta)+centerY);
+		}
+		
+		return ret;
+	}
 	
 	public static void main(String[]args){
 		JFrame f=new JFrame();
