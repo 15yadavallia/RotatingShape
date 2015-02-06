@@ -15,16 +15,64 @@ public class ShapePanel extends JComponent{
 
 	private RotatingShape shape;
 	private Color color;
-	private int speed = 1;
-	private int thickness = 5;
+	private int speed;
+	private int thickness;
+	
+	public ShapePanel(Line line, Color color, int speed, int thickness){
+		shape = line;
+		this.color = color;
+		this.speed = speed;
+		this.thickness = thickness;
+	}
 	
 	public ShapePanel(RotatingShape line){
 		shape = line;
+		color = Color.BLACK;
+		speed = 1;
+		thickness = 5;
 	}
 	
 //	public ShapePanel(RegularPolygon polygon){
 //		shape = polygon;
 //	}
+	
+	public RotatingShape getShape(){
+		return shape;
+	}
+	
+	public void setShape(RotatingShape shape){
+		this.shape = shape;
+	}
+	
+	public Color getColor(){
+		return color;
+	}
+	
+	public void setColor(Color c){
+		color = c;
+	}
+	
+	public int getSpeed(){
+		return speed;
+	}
+	
+	public void setSpeed(int speed){
+		this.speed = speed;
+	}
+	
+	public int getThickness(){
+		return thickness;
+	}
+	
+	public void setThickness(int thickness){
+		this.thickness = thickness;
+	}
+	
+	public void randomColor(){
+		Random r = new Random();
+		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
+		setColor(color);
+	}
 	
 	public void paintComponent(Graphics g){
 		Graphics2D g2 = (Graphics2D)g;
@@ -42,10 +90,6 @@ public class ShapePanel extends JComponent{
 		}
 	}
 	
-	public void setColor(Color c) {
-		color = c;
-	}
-
 	public void rotate(final boolean clockwise){
 		class UpdateListener implements ActionListener{
 			public void actionPerformed(ActionEvent event){
@@ -64,9 +108,7 @@ public class ShapePanel extends JComponent{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Line b= new Line(2,true);
 		ShapePanel c = new ShapePanel(b);
-		Random r = new Random();
-		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
-		c.setColor(color);
+		
 		frame.add(c);
 		frame.setVisible(true);
 		c.rotate(true);

@@ -17,16 +17,16 @@ import javax.swing.event.ChangeEvent;
 
 
 public class JFrameDisplay implements ActionListener {
-	static int frameW = 500;
-	static int frameH = 500;
+	private static int frameW = 500;
+	private static int frameH = 500;
 	private JPanel panel;
 	//REMEMBER RESIZING
-	static final int MIN = 0;
-	static final int MAX = 30;
-	static final int INIT = 15;
-	boolean frozen = false;
-	Timer timer;
-	int delay;
+	private static final int MIN = 0;
+	private static final int MAX = 30;
+	private static final int INIT = 15;
+	private boolean frozen = false; //getRotating()?
+	//Timer timer;
+	//int delay;
 
 		public JFrameDisplay() {
 		}
