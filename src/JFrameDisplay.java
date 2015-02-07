@@ -6,17 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-import javax.swing.event.ChangeEvent;
 
-
-public class JFrameDisplay implements ActionListener {
+public class JFrameDisplay{
 	private static int frameW = 500;
 	private static int frameH = 500;
 	private JPanel panel;
@@ -50,18 +45,11 @@ public class JFrameDisplay implements ActionListener {
 		f.setTitle("Rotating Shape");
 	}
 
-
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				createFrame();
 			}
 		});
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
 }
