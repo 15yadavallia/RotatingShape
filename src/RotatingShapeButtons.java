@@ -69,11 +69,11 @@ public class RotatingShapeButtons{
 		});  
 	}
 
-	public ShapePanel getShapePanel(){
+	public ShapePanel getShapePanel() {
 		return panel;
 	}
 
-	public void setShapePanel(ShapePanel s){
+	public void setShapePanel(ShapePanel s) {
 		this.panel = s;
 	}
 }
