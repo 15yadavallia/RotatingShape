@@ -8,32 +8,32 @@ public class Line extends RotatingShape{
 	public Line(){
 	}
 
-	public int getX1(ShapePanel panel){
-			double radius = Math.sqrt(panel.getWidth()/2 * panel.getWidth()/2 + panel.getHeight()/2 * panel.getHeight()/2);
-			return (int)(-radius * Math.cos(getTheta()) + panel.getWidth()/2);
+	public int getX1(int panelWidth, int panelHeight){
+			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
+			return (int)(-radius * Math.cos(getTheta()) + panelWidth/2);
 	}
 	
-	public int getX2(ShapePanel panel){
-			double radius = Math.sqrt(panel.getWidth()/2 * panel.getWidth()/2 + panel.getHeight()/2 * panel.getHeight()/2);
-			return (int)(radius * Math.cos(getTheta()) + panel.getWidth()/2);
+	public int getX2(int panelWidth, int panelHeight){
+			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
+			return (int)(radius * Math.cos(getTheta()) + panelWidth/2);
 	}
 	
-	public int getY1(ShapePanel panel){
-			double radius = Math.sqrt(panel.getWidth()/2 * panel.getWidth()/2 + panel.getHeight()/2 * panel.getHeight()/2);
-			return (int)(-radius * Math.sin(getTheta()) + panel.getHeight()/2);
+	public int getY1(int panelWidth, int panelHeight){
+			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
+			return (int)(-radius * Math.sin(getTheta()) + panelHeight/2);
 	}
 	
-	public int getY2(ShapePanel panel){
-			double radius = Math.sqrt(panel.getWidth()/2 * panel.getWidth()/2 + panel.getHeight()/2 * panel.getHeight()/2);
-			return (int)(radius * Math.sin(getTheta()) + panel.getHeight()/2);
+	public int getY2(int panelWidth, int panelHeight){
+			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
+			return (int)(radius * Math.sin(getTheta()) + panelHeight/2);
 	}
 	
 	public static void main(String[] args){
 		Line b = new Line(0,true);
 		ShapePanel a = new ShapePanel(b);
 		a.setSize(500, 500);
-		System.out.println(b.getX1(a) + " " + b.getX2(a));
+		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
 		b.setTheta(2);
-		System.out.println(b.getX1(a) + " " + b.getX2(a));
+		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
 	}
 }
