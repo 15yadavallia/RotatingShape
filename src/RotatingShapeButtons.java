@@ -67,6 +67,53 @@ public class RotatingShapeButtons{
 				System.out.println(panel.getColor());
 			}
 		});  
+		
+		JButton b3 = new JButton("Less Sides");
+		constraints.fill = GridBagConstraints.LAST_LINE_START;
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		constraints.insets = new Insets(250,0,0,0);
+		pane.add(b3, constraints);
+		b3.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e)
+			{
+				if(panel.getShape() instanceof Line){}
+				else if(panel.getShape() instanceof RegularPolygon){
+					RegularPolygon a = (RegularPolygon)panel.getShape();
+					if(a.getNumSides() > 3){
+						a.setNumSides(a.getNumSides()-1);
+						System.out.println(a.getNumSides());
+					}
+					else if(a.getNumSides() == 3){
+						panel.setShape(new Line(panel.getShape().isRotating(), panel.getShape().getClockwise()));
+						System.out.println("line");
+					}	
+				}
+			}
+		});  
+		
+		JButton b4 = new JButton("More Sides");
+		constraints.fill = GridBagConstraints.LAST_LINE_START;
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		constraints.insets = new Insets(300,0,0,0);
+		pane.add(b4, constraints);
+		b4.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e)
+			{
+				if(panel.getShape() instanceof Line){
+					System.out.println("line");
+					panel.setShape(new RegularPolygon(3, 50, panel.getShape().isRotating(), panel.getShape().getClockwise()));
+				}
+				else if(panel.getShape() instanceof RegularPolygon){
+					RegularPolygon a = (RegularPolygon)panel.getShape();
+					a.setNumSides(a.getNumSides()+1);
+					System.out.println(a.getNumSides());
+				}
+			}
+		});  
 	}
 
 	public ShapePanel getShapePanel() {

@@ -11,6 +11,12 @@ public class RegularPolygon extends RotatingShape{
 		sideLength= length;
 	}
 	
+	public RegularPolygon(){
+		super(false, true);
+		numSides = 3;
+		sideLength = 50;
+	}
+	
 	/**
 	 * @return the numSides
 	 */
