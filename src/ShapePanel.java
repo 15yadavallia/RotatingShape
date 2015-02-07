@@ -28,13 +28,23 @@ public class ShapePanel extends JComponent{
 	public ShapePanel(RotatingShape line){
 		shape = line;
 		color = Color.BLACK;
-		speed = 1;
+		speed = 10;
 		thickness = 5;
 	}
 	
-//	public ShapePanel(RegularPolygon polygon){
-//		shape = polygon;
-//	}
+	public ShapePanel(RegularPolygon polygon, Color color, int speed, int thickness){
+		shape = polygon;
+		this.color = color;
+		this.speed = speed;
+		this.thickness = thickness;
+	}
+	
+	public ShapePanel(RegularPolygon polygon){
+		shape = polygon;
+		color = Color.BLACK;
+		speed = 10;
+		thickness = 5;
+	}
 	
 	public RotatingShape getShape(){
 		return shape;
@@ -68,7 +78,7 @@ public class ShapePanel extends JComponent{
 		this.thickness = thickness;
 	}
 	
-	public void randomColor(){
+	public void randomizeShapeColor(){
 		Random r = new Random();
 		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
 		setColor(color);
@@ -79,7 +89,10 @@ public class ShapePanel extends JComponent{
 		g2.setStroke(new BasicStroke(thickness));
 		g2.setColor(color);
 		if(shape instanceof Line){
-			g2.drawLine(((Line)shape).getX1(this), ((Line)shape).getY1(this), ((Line)shape).getX2(this), ((Line)shape).getY2(this));
+			g2.drawLine(((Line)shape).getX1(this.getWidth(), this.getHeight()), 
+					((Line)shape).getY1(this.getWidth(), this.getHeight()), 
+					((Line)shape).getX2(this.getWidth(), this.getHeight()), 
+					((Line)shape).getY2(this.getWidth(), this.getHeight()));
 		}
 		else if(shape instanceof RegularPolygon){
 			int[][] points = ((RegularPolygon)shape).getVertices(this);
@@ -90,10 +103,10 @@ public class ShapePanel extends JComponent{
 		}
 	}
 	
-	public void rotate(final boolean clockwise){
+	public void rotate(){
 		class UpdateListener implements ActionListener{
 			public void actionPerformed(ActionEvent event){
-				shape.rotate(clockwise);
+				shape.rotate();
 				repaint();
 			}
 		}
@@ -104,14 +117,14 @@ public class ShapePanel extends JComponent{
 	
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
-		frame.setSize(500, 700);
+		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Line b= new Line(2,true);
+		RegularPolygon b = new RegularPolygon(5, 100, true, true);
+//		Line b = new Line(true);
 		ShapePanel c = new ShapePanel(b);
 		
 		frame.add(c);
 		frame.setVisible(true);
-		c.rotate(true);
+		c.rotate();
 	}
-
 }

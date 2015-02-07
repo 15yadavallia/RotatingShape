@@ -19,18 +19,6 @@ public class RotatingShapeSliders extends RotatingShape{
 		
 		}
 
-	
-//	  public void start() {
-//	        timer.start();
-//	        frozen = false;
-//	        
-//	        }
-//	
-//	  public void stop() {
-//		  timer.stop();
-//		  frozen = true;
-//	  }
-//	  
 //	public void change(ChangeEvent event) {
 //	    JSlider slide = (JSlider)event.getSource();
 //	    if (!slide.getValueIsAdjusting()) {

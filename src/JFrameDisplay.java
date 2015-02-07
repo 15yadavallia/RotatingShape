@@ -36,7 +36,7 @@ public class JFrameDisplay implements ActionListener {
 		
 		RotatingShapeButtons buttons = new RotatingShapeButtons(pane, constraints);
 		RotatingShapeSliders sliders = new RotatingShapeSliders(pane, constraints);
-		Line l = new Line(7, true);
+		Line l = new Line(true, false);
 		ShapePanel p = new ShapePanel(l);
 		buttons.setShapePanel(p);
 	}

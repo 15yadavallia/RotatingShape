@@ -1,19 +1,15 @@
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.JButton;
 
 
-public class RotatingShapeButtons extends RotatingShape{
+public class RotatingShapeButtons{
 
 	ShapePanel panel;
-
-
 
 	public RotatingShapeButtons(Container pane, GridBagConstraints constraints) {
 		JButton b = new JButton("Start/Stop Rotation");
@@ -26,18 +22,19 @@ public class RotatingShapeButtons extends RotatingShape{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				if (isRotating()) {
-					panel.repaint();
-					setRotating(false);
-				} else {
-					setRotating(true);
-					rotate(true);
+				if (panel.getShape().isRotating()){
+				//?	panel.repaint();
+					panel.getShape().setRotating(false);
 				}
+				else{
+					panel.getShape().setRotating(true);
+					panel.rotate();
+				}
+				System.out.println(panel.getShape().isRotating() + " " + panel.getShape().getClockwise());
 			}
-
 		});    
 
-		JButton b1 = new JButton("Change direction");
+		JButton b1 = new JButton("Change Direction");
 		constraints.fill = GridBagConstraints.LAST_LINE_START;
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -47,11 +44,15 @@ public class RotatingShapeButtons extends RotatingShape{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				rotate(false);
+				if(panel.getShape().getClockwise())
+					panel.getShape().setClockwise(false);
+				else
+					panel.getShape().setClockwise(true);
+				System.out.println(panel.getShape().getClockwise());
 			}
 		});  
 
-		JButton b2 = new JButton("Change color");
+		JButton b2 = new JButton("Change Color");
 		constraints.fill = GridBagConstraints.LAST_LINE_START;
 		constraints.gridx = 0;
 		constraints.gridy = 1;
@@ -61,24 +62,18 @@ public class RotatingShapeButtons extends RotatingShape{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				Random r = new Random();
-				Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
-				panel.setColor(color);
+				panel.randomizeShapeColor();
 				panel.repaint();
+				System.out.println(panel.getColor());
 			}
 		});  
-
-
-
-	}
-
-
-	public void setShapePanel(ShapePanel s) {
-		this.panel = s;
 	}
 
 	public ShapePanel getShapePanel() {
 		return panel;
 	}
 
+	public void setShapePanel(ShapePanel s) {
+		this.panel = s;
+	}
 }

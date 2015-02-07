@@ -5,8 +5,8 @@ public class RegularPolygon extends RotatingShape{
 	private int numSides;
 	private double sideLength;
 	
-	public RegularPolygon(int sides, double length, double theta, boolean rotating){
-		super(theta,rotating);
+	public RegularPolygon(int sides, double length, boolean isRotating, boolean clockwise){
+		super(isRotating, clockwise);
 		numSides=sides;
 		sideLength= length;
 	}
@@ -66,25 +66,3 @@ public class RegularPolygon extends RotatingShape{
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

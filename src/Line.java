@@ -1,8 +1,8 @@
 
 public class Line extends RotatingShape{
 
-	public Line(double theta, boolean isRotating){
-		super(theta, isRotating);
+	public Line(boolean isRotating, boolean clockwise){
+		super(isRotating, clockwise);
 	}
 
 	public Line(){
@@ -29,7 +29,7 @@ public class Line extends RotatingShape{
 	}
 	
 	public static void main(String[] args){
-		Line b = new Line(0,true);
+		Line b = new Line(true, true);
 		ShapePanel a = new ShapePanel(b);
 		a.setSize(500, 500);
 		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
