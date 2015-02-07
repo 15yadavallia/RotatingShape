@@ -43,9 +43,9 @@ public class RegularPolygon extends RotatingShape{
 		return Math.PI-2*Math.PI/numSides;
 	}
 	
-	public int[][] getVertices(ShapePanel panel){
-		int centerX = panel.getWidth()/2;
-		int centerY = panel.getHeight()/2;
+	public int[][] getVertices(int panelWidth, int panelHeight){
+		int centerX = panelWidth/2;
+		int centerY = panelHeight/2;
 		int[][] ret = new int[numSides][2];
 		
 		double radius = sideLength/(2*Math.sin(Math.PI/numSides));
@@ -55,14 +55,12 @@ public class RegularPolygon extends RotatingShape{
 			ret[i][0]=(int)Math.round(radius*Math.cos(currTheta)+centerX);
 			ret[i][1]=(int)Math.round(radius*Math.sin(currTheta)+centerY);
 		}
-		
 		return ret;
 	}
 	
 	public static void main(String[]args){
-		JFrame f=new JFrame();
-		f.setSize(300,300);
-		f.setVisible(true);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		RegularPolygon b = new RegularPolygon(4, 50, false, true);
+		ShapePanel a = new ShapePanel(b);
+		a.setSize(500, 500);
 	}
 }

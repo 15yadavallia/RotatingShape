@@ -31,7 +31,7 @@ public class Line extends RotatingShape{
 	public static void main(String[] args){
 		Line b = new Line(true, true);
 		ShapePanel a = new ShapePanel(b);
-		a.setSize(500, 500);
+		a.setSize(510, 500);
 		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
 		b.setTheta(2);
 		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));

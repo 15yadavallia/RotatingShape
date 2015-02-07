@@ -16,7 +16,6 @@ public class RotatingShapeSliders extends RotatingShape{
         slider.setPaintTicks(true);
 		slider.setPaintLabels(true);
 		pane.add(slider, constraints);
-		
 		}
 
 //	public void change(ChangeEvent event) {
