@@ -31,9 +31,11 @@ public class JFrameDisplay{
 		
 		RotatingShapeButtons buttons = new RotatingShapeButtons(pane, constraints);
 		RotatingShapeSliders sliders = new RotatingShapeSliders(pane, constraints);
-		Line l = new Line(true, false);
-		ShapePanel p = new ShapePanel(l);
+//		Line l = new Line(true, false);
+		RegularPolygon a = new RegularPolygon(6,3,true, false);
+		ShapePanel p = new ShapePanel(a);
 		buttons.setShapePanel(p);
+		sliders.setShapePanel(p);
 	}
 
 	private static void createFrame(){
