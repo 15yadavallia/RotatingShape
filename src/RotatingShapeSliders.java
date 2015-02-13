@@ -12,7 +12,7 @@ public class RotatingShapeSliders{
 	ShapePanel panel;
 	
 	public RotatingShapeSliders(Container pane, GridBagConstraints constraints) {
-		final JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 50, 20);
+		final JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 500, 25);
 		constraints.insets = new Insets(0,50,0,50);
 //        speed.setMinorTickSpacing(5);
 //        speed.setMajorTickSpacing(10);
@@ -23,13 +23,14 @@ public class RotatingShapeSliders{
 			public void stateChanged(ChangeEvent e) {
 				if (!speed.getValueIsAdjusting()) {
 			        int newSpeed = speed.getValue();
-			        panel.setSpeed(53 - newSpeed);
+			        panel.setSpeed(503 - newSpeed);
+			        panel.repaint();
 			        System.out.println(panel.getSpeed());
 			    }
 			}	
 		});
 		
-		final JSlider thickness = new JSlider(JSlider.HORIZONTAL, 1, 20, 20);
+		final JSlider thickness = new JSlider(JSlider.HORIZONTAL, 1, 21, 11);
 		constraints.insets = new Insets(60,50,0,50);
 //        thickness.setMinorTickSpacing(1);
 //        thickness.setMajorTickSpacing(5);
@@ -41,12 +42,12 @@ public class RotatingShapeSliders{
 				if (!thickness.getValueIsAdjusting()) {
 			        int newThickness = thickness.getValue();
 			        panel.setThickness(newThickness);
-			        System.out.println(panel.getThickness());
+			        panel.repaint();
 			    }
 			}	
 		});
 		
-		final JSlider sideLength = new JSlider(JSlider.HORIZONTAL, 1, 1000, 20);
+		final JSlider sideLength = new JSlider(JSlider.HORIZONTAL, 1, 1000, 500);
 		constraints.insets = new Insets(120,50,0,50);
 //        speed.setMinorTickSpacing(10);
 //        speed.setMajorTickSpacing(20);
@@ -60,7 +61,7 @@ public class RotatingShapeSliders{
 					if (!sideLength.getValueIsAdjusting()) {
 						int newLength = sideLength.getValue();
 						a.setLength(newLength/a.getNumSides());
-						System.out.println(((RegularPolygon) (panel.getShape())).getLength());
+						panel.repaint();
 					}
 				}
 			}	

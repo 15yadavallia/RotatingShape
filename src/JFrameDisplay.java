@@ -22,8 +22,10 @@ public class JFrameDisplay{
 	private boolean frozen = false; //getRotating()?
 	//Timer timer;
 	//int delay;
+	private static RotatingShape a = new Line(false, false);
+	private static ShapePanel p = new ShapePanel(a);
 
-		public JFrameDisplay() {
+	public JFrameDisplay() {
 		}
 	public static void addComponents(Container pane) {
 		pane.setLayout(new GridBagLayout());
@@ -31,9 +33,9 @@ public class JFrameDisplay{
 		
 		RotatingShapeButtons buttons = new RotatingShapeButtons(pane, constraints);
 		RotatingShapeSliders sliders = new RotatingShapeSliders(pane, constraints);
-//		Line l = new Line(true, false);
-		RegularPolygon a = new RegularPolygon(6,3,true, false);
-		ShapePanel p = new ShapePanel(a);
+		Line l = new Line(true, false);
+//		RegularPolygon a = new RegularPolygon(6,3,true, false);
+//		p = new ShapePanel(a);
 		buttons.setShapePanel(p);
 		sliders.setShapePanel(p);
 	}
@@ -43,6 +45,11 @@ public class JFrameDisplay{
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(frameW, frameH);
 		addComponents(f.getContentPane());
+		JFrame f2 = new JFrame();
+		f2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f2.setSize(frameW, frameH);
+		f2.add(p);
+		f2.setVisible(true);
 		f.setVisible(true);
 		f.setTitle("Rotating Shape");
 	}

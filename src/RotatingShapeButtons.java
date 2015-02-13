@@ -23,14 +23,12 @@ public class RotatingShapeButtons{
 			public void actionPerformed(ActionEvent e)
 			{
 				if (panel.getShape().isRotating()){
-				//?	panel.repaint();
 					panel.getShape().setRotating(false);
 				}
 				else{
 					panel.getShape().setRotating(true);
 					panel.rotate();
 				}
-				System.out.println(panel.getShape().isRotating() + " " + panel.getShape().getClockwise());
 			}
 		});    
 
@@ -48,7 +46,6 @@ public class RotatingShapeButtons{
 					panel.getShape().setClockwise(false);
 				else
 					panel.getShape().setClockwise(true);
-				System.out.println(panel.getShape().getClockwise());
 			}
 		});  
 
@@ -64,7 +61,6 @@ public class RotatingShapeButtons{
 			{
 				panel.randomizeShapeColor();
 				panel.repaint();
-				System.out.println(panel.getColor());
 			}
 		});  
 		
@@ -78,16 +74,15 @@ public class RotatingShapeButtons{
 
 			public void actionPerformed(ActionEvent e)
 			{
-				if(panel.getShape() instanceof Line){}
-				else if(panel.getShape() instanceof RegularPolygon){
+				if(panel.getShape() instanceof RegularPolygon){
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					if(a.getNumSides() > 3){
 						a.setNumSides(a.getNumSides()-1);
-						System.out.println(a.getNumSides());
+						panel.repaint();
 					}
 					else if(a.getNumSides() == 3){
 						panel.setShape(new Line(panel.getShape().isRotating(), panel.getShape().getClockwise()));
-						System.out.println("line");
+						panel.repaint();
 					}	
 				}
 			}
@@ -104,13 +99,13 @@ public class RotatingShapeButtons{
 			public void actionPerformed(ActionEvent e)
 			{
 				if(panel.getShape() instanceof Line){
-					System.out.println("line");
 					panel.setShape(new RegularPolygon(3, 50, panel.getShape().isRotating(), panel.getShape().getClockwise()));
+					panel.repaint();
 				}
 				else if(panel.getShape() instanceof RegularPolygon){
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					a.setNumSides(a.getNumSides()+1);
-					System.out.println(a.getNumSides());
+					panel.repaint();
 				}
 			}
 		});  

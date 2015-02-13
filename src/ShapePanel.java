@@ -28,8 +28,8 @@ public class ShapePanel extends JComponent{
 	public ShapePanel(RotatingShape line){
 		shape = line;
 		color = Color.BLACK;
-		speed = 10;
-		thickness = 5;
+		speed = 25;
+		thickness = 11;
 	}
 	
 	public ShapePanel(RegularPolygon polygon, Color color, int speed, int thickness){
@@ -42,8 +42,8 @@ public class ShapePanel extends JComponent{
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
 		color = Color.BLACK;
-		speed = 10;
-		thickness = 5;
+		speed = 25;
+		thickness = 11;
 	}
 	
 	public RotatingShape getShape(){

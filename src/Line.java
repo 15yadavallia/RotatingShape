@@ -5,9 +5,6 @@ public class Line extends RotatingShape{
 		super(isRotating, clockwise);
 	}
 
-	public Line(){
-	}
-
 	public int getX1(int panelWidth, int panelHeight){
 			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
 			return (int)(-radius * Math.cos(getTheta()) + panelWidth/2);
