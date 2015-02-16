@@ -17,6 +17,7 @@ public class ShapePanel extends JComponent{
 	private Color color;
 	private int speed;
 	private int thickness;
+	private Timer timer;
 	
 	public ShapePanel(Line line, Color color, int speed, int thickness){
 		shape = line;
@@ -68,6 +69,7 @@ public class ShapePanel extends JComponent{
 	
 	public void setSpeed(int speed){
 		this.speed = speed;
+		timer.setDelay(speed);
 	}
 	
 	public int getThickness(){
@@ -111,9 +113,10 @@ public class ShapePanel extends JComponent{
 			}
 		}
 		ActionListener listener = new UpdateListener();
-		Timer timer = new Timer(speed, listener);
+		timer = new Timer(speed, listener);
 		timer.start();
 	}
+	
 	
 	public static void main(String[] args){
 		JFrame frame = new JFrame();

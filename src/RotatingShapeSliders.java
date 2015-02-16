@@ -12,7 +12,7 @@ public class RotatingShapeSliders{
 	ShapePanel panel;
 	
 	public RotatingShapeSliders(Container pane, GridBagConstraints constraints) {
-		final JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 500, 25);
+		final JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 20, 0);
 		constraints.insets = new Insets(0,50,0,50);
 //        speed.setMinorTickSpacing(5);
 //        speed.setMajorTickSpacing(10);
@@ -23,7 +23,7 @@ public class RotatingShapeSliders{
 			public void stateChanged(ChangeEvent e) {
 				if (!speed.getValueIsAdjusting()) {
 			        int newSpeed = speed.getValue();
-			        panel.setSpeed(503 - newSpeed);
+			        panel.setSpeed(23 - newSpeed);
 			        panel.repaint();
 			        System.out.println(panel.getSpeed());
 			    }
