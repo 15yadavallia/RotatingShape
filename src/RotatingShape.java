@@ -1,5 +1,5 @@
 
-public abstract class RotatingShape{
+public abstract class RotatingShape {
 
 	private double theta;
 	private boolean isRotating;

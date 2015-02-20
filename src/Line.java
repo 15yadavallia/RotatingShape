@@ -1,5 +1,5 @@
 
-public class Line extends RotatingShape{
+public class Line extends RotatingShape {
 
 	public Line(boolean isRotating, boolean clockwise){
 		super(isRotating, clockwise);

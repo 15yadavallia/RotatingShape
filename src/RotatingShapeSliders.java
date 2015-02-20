@@ -11,14 +11,15 @@ public class RotatingShapeSliders{
 
 	ShapePanel panel;
 	
-	public RotatingShapeSliders(Container pane, GridBagConstraints constraints) {
+	public RotatingShapeSliders(ShapePanel p, GridBagConstraints constraints) {
+		panel = p;
 		final JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 20, 0);
 		constraints.insets = new Insets(0,50,0,50);
 //        speed.setMinorTickSpacing(5);
 //        speed.setMajorTickSpacing(10);
 //        speed.setPaintTicks(true);
 		speed.setPaintLabels(true);
-		pane.add(speed, constraints);
+		panel.add(speed, constraints);
 		speed.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
 				if (!speed.getValueIsAdjusting()) {
@@ -36,7 +37,7 @@ public class RotatingShapeSliders{
 //        thickness.setMajorTickSpacing(5);
 //        thickness.setPaintTicks(true);
 		thickness.setPaintLabels(true);
-		pane.add(thickness, constraints);
+		panel.add(thickness, constraints);
 		thickness.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
 				if (!thickness.getValueIsAdjusting()) {
@@ -53,7 +54,7 @@ public class RotatingShapeSliders{
 //        speed.setMajorTickSpacing(20);
 //        speed.setPaintTicks(true);
 		sideLength.setPaintLabels(true);
-		pane.add(sideLength, constraints);
+		panel.add(sideLength, constraints);
 		sideLength.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
 				if(panel.getShape() instanceof RegularPolygon){
@@ -70,9 +71,5 @@ public class RotatingShapeSliders{
 	
 	public ShapePanel getShapePanel() {
 		return panel;
-	}
-
-	public void setShapePanel(ShapePanel s) {
-		this.panel = s;
 	}
 }

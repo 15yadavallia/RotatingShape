@@ -1,4 +1,3 @@
-import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -7,17 +6,18 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 
-public class RotatingShapeButtons{
+public class RotatingShapeButtons {
 
 	ShapePanel panel;
 
-	public RotatingShapeButtons(Container pane, GridBagConstraints constraints) {
+	public RotatingShapeButtons(ShapePanel p, GridBagConstraints constraints) {
+		panel = p;
 		JButton b = new JButton("Start/Stop Rotation");
 		constraints.fill = GridBagConstraints.LAST_LINE_START;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 		constraints.insets = new Insets(0,0,0,0);	//top, left, bottom, right
-		pane.add(b, constraints);
+		panel.add(b, constraints);
 		b.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -37,7 +37,7 @@ public class RotatingShapeButtons{
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(200,0,0,0);
-		pane.add(b1, constraints);
+		panel.add(b1, constraints);
 		b1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -54,7 +54,7 @@ public class RotatingShapeButtons{
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(150,0,0,0);
-		pane.add(b2, constraints);
+		panel.add(b2, constraints);
 		b2.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -69,7 +69,7 @@ public class RotatingShapeButtons{
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(250,0,0,0);
-		pane.add(b3, constraints);
+		panel.add(b3, constraints);
 		b3.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -93,7 +93,7 @@ public class RotatingShapeButtons{
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.insets = new Insets(300,0,0,0);
-		pane.add(b4, constraints);
+		panel.add(b4, constraints);
 		b4.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -113,9 +113,5 @@ public class RotatingShapeButtons{
 
 	public ShapePanel getShapePanel() {
 		return panel;
-	}
-
-	public void setShapePanel(ShapePanel s) {
-		this.panel = s;
 	}
 }

@@ -8,10 +8,11 @@ import java.util.Random;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-public class ShapePanel extends JComponent{
+public class ShapePanel extends JPanel {
 
 	private RotatingShape shape;
 	private Color color;
