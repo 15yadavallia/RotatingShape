@@ -20,8 +20,7 @@ public class RotatingShapeButtons {
 		panel.add(b, constraints);
 		b.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 				if (panel.getShape().isRotating()){
 					panel.getShape().setRotating(false);
 				}

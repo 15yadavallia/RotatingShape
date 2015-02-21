@@ -1,5 +1,6 @@
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -19,75 +20,76 @@ public class ShapePanel extends JPanel {
 	private int speed;
 	private int thickness;
 	private Timer timer;
-	
+
 	public ShapePanel(Line line, Color color, int speed, int thickness){
 		shape = line;
 		this.color = color;
 		this.speed = speed;
 		this.thickness = thickness;
 	}
-	
+
 	public ShapePanel(RotatingShape line){
 		shape = line;
 		color = Color.BLACK;
 		speed = 25;
 		thickness = 11;
 	}
-	
+
 	public ShapePanel(RegularPolygon polygon, Color color, int speed, int thickness){
 		shape = polygon;
 		this.color = color;
 		this.speed = speed;
 		this.thickness = thickness;
 	}
-	
+
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
 		color = Color.BLACK;
 		speed = 25;
 		thickness = 11;
 	}
-	
+
 	public RotatingShape getShape(){
 		return shape;
 	}
-	
+
 	public void setShape(RotatingShape shape){
 		this.shape = shape;
 	}
-	
+
 	public Color getColor(){
 		return color;
 	}
-	
+
 	public void setColor(Color c){
 		color = c;
 	}
-	
+
 	public int getSpeed(){
 		return speed;
 	}
-	
+
 	public void setSpeed(int speed){
 		this.speed = speed;
 		timer.setDelay(speed);
 	}
-	
+
 	public int getThickness(){
 		return thickness;
 	}
-	
+
 	public void setThickness(int thickness){
 		this.thickness = thickness;
 	}
-	
+
 	public void randomizeShapeColor(){
 		Random r = new Random();
 		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
 		setColor(color);
 	}
-	
+
 	public void paintComponent(Graphics g){
+		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setStroke(new BasicStroke(thickness));
 		g2.setColor(color);
@@ -105,7 +107,7 @@ public class ShapePanel extends JPanel {
 			g2.drawLine(points[0][0], points[0][1], points[points.length-1][0], points[points.length-1][1]);
 		}
 	}
-	
+
 	public void rotate(){
 		class UpdateListener implements ActionListener{
 			public void actionPerformed(ActionEvent event){
@@ -116,17 +118,18 @@ public class ShapePanel extends JPanel {
 		ActionListener listener = new UpdateListener();
 		timer = new Timer(speed, listener);
 		timer.start();
+
 	}
-	
-	
+
+
 	public static void main(String[] args){
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RegularPolygon b = new RegularPolygon(20, 50, true, true);
-//		Line b = new Line(true, false);
+		//		Line b = new Line(true, false);
 		ShapePanel c = new ShapePanel(b);
-		
+
 		frame.add(c);
 		frame.setVisible(true);
 		c.rotate();

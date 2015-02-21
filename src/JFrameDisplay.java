@@ -12,15 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class JFrameDisplay{
-	private static int frameW = 500;
-	private static int frameH = 500;
-	private JPanel panel;
-	//REMEMBER RESIZING
-	private static final int MIN = 0;
-	private static final int MAX = 30;
-	private static final int INIT = 15;
-	private boolean frozen = false; //getRotating()?
+public class JFrameDisplay {
+	private static int frameW = 750;
+	private static int frameH = 750;
 
 	public JFrameDisplay() {
 		}
