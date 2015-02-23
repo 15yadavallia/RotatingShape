@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 
 public class RotatingShapeButtons {
 
-	ShapePanel panel;
-	JPanel buttonPanel;
+	private ShapePanel panel;
+	private JPanel buttonPanel;
 
 	public RotatingShapeButtons(ShapePanel p, JPanel button) {
 		buttonPanel = button;

@@ -28,7 +28,7 @@ public class ShapePanel extends JPanel {
 	public ShapePanel(Line line){
 		shape = line;
 		color = Color.BLACK;
-		speed = 203;
+		speed = 110;
 		rotate();
 	}
 
@@ -41,7 +41,7 @@ public class ShapePanel extends JPanel {
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
 		color = Color.BLACK;
-		speed = 203;
+		speed = 110;
 	}
 
 	public RotatingShape getShape(){

@@ -10,8 +10,8 @@ import javax.swing.event.ChangeListener;
 
 public class RotatingShapeSliders {
 
-	ShapePanel panel;
-	JPanel controlPanel;
+	private ShapePanel panel;
+	private JPanel controlPanel;
 	
 	public RotatingShapeSliders(ShapePanel p, JPanel control) {
 		panel = p;
@@ -30,7 +30,7 @@ public class RotatingShapeSliders {
 		controlPanel.add(speedLabel, constraints);
 		
 		// Create and add slider component below speed label
-		final JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 200, 0);
+		final JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		// Set slider position
 		constraints.gridy = 1;
 		//speedSlider.setMinorTickSpacing(5);
@@ -43,7 +43,7 @@ public class RotatingShapeSliders {
 			public void stateChanged(ChangeEvent e) {
 				if (!speedSlider.getValueIsAdjusting()) {
 			        int newSpeed = speedSlider.getValue();
-			        panel.setSpeed(203 - newSpeed);
+			        panel.setSpeed(110 - newSpeed);
 			        panel.repaint();
 			    }
 			}	
@@ -89,7 +89,7 @@ public class RotatingShapeSliders {
 		controlPanel.add(sideLengthLabel, constraints);
 		
 		// Create and add side length slider
-		final JSlider sideLengthSlider = new JSlider(JSlider.HORIZONTAL, 1, 1000, 500);
+		final JSlider sideLengthSlider = new JSlider(JSlider.HORIZONTAL, 1, 1000, 1000);
 		// Set position
 		constraints.gridy = 1;
 		

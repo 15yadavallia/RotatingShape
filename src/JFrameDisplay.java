@@ -1,12 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class JFrameDisplay {
-	private static final int FRAME_WIDTH = 750;
+	private static final int FRAME_WIDTH = 825;
 	private static final int FRAME_HEIGHT = 750;
 
 	public JFrameDisplay() {
@@ -40,6 +41,7 @@ public class JFrameDisplay {
 		JFrame f = new JFrame("Rotating Shape");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		f.setMinimumSize(new Dimension(808,200));
 		addComponents(f.getContentPane());
 		f.setVisible(true);
 	}
