@@ -5,24 +5,24 @@ public class Line extends RotatingShape {
 		super(isRotating, clockwise);
 	}
 
+	public double getRadius(int panelWidth, int panelHeight){
+		return Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
+	}
+	
 	public int getX1(int panelWidth, int panelHeight){
-			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
-			return (int)(-radius * Math.cos(getTheta()) + panelWidth/2);
+			return (int)(-getRadius(panelWidth, panelHeight) * Math.cos(getTheta()) + panelWidth/2);
 	}
 	
 	public int getX2(int panelWidth, int panelHeight){
-			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
-			return (int)(radius * Math.cos(getTheta()) + panelWidth/2);
+			return (int)(getRadius(panelWidth, panelHeight) * Math.cos(getTheta()) + panelWidth/2);
 	}
 	
 	public int getY1(int panelWidth, int panelHeight){
-			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
-			return (int)(-radius * Math.sin(getTheta()) + panelHeight/2);
+			return (int)(-getRadius(panelWidth, panelHeight) * Math.sin(getTheta()) + panelHeight/2);
 	}
 	
 	public int getY2(int panelWidth, int panelHeight){
-			double radius = Math.sqrt(panelWidth/2 * panelWidth/2 + panelHeight/2 * panelHeight/2);
-			return (int)(radius * Math.sin(getTheta()) + panelHeight/2);
+			return (int)(getRadius(panelWidth, panelHeight) * Math.sin(getTheta()) + panelHeight/2);
 	}
 	
 	public static void main(String[] args){

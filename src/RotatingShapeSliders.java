@@ -45,7 +45,6 @@ public class RotatingShapeSliders {
 			        int newSpeed = speedSlider.getValue();
 			        panel.setSpeed(203 - newSpeed);
 			        panel.repaint();
-			        System.out.println(panel.getSpeed());
 			    }
 			}	
 		});

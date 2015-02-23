@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class JFrameDisplay {
-	private static int frameW = 1000;
-	private static int frameH = 1000;
+	private static int frameW = 750;
+	private static int frameH = 750;
 
 	public JFrameDisplay() {
 	}
