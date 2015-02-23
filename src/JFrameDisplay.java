@@ -6,20 +6,20 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class JFrameDisplay {
-	private static int frameW = 750;
-	private static int frameH = 750;
+	private static final int FRAME_WIDTH = 750;
+	private static final int FRAME_HEIGHT = 750;
 
 	public JFrameDisplay() {
 	}
 	public static void addComponents(Container pane) {
 		Line l = new Line(false, true);
-		RegularPolygon a = new RegularPolygon(60,8,true, false);
+//		RegularPolygon a = new RegularPolygon(60,8,true, false);
 		ShapePanel shape = new ShapePanel(l);
 		JPanel buttons = new JPanel();
 		JPanel sliders = new JPanel();
 		buttons.setSize(buttons.getWidth(), 25);
 		sliders.setSize(buttons.getWidth(), 25);
-		shape.setJFD(pane);
+		shape.setSize(FRAME_WIDTH, FRAME_HEIGHT - 75);
 //		pane.setLayout(new GridBagLayout());
 //		GridBagConstraints gbc = new GridBagConstraints();
 //		gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -37,12 +37,11 @@ public class JFrameDisplay {
 	}
 
 	private static void createFrame(){
-		JFrame f = new JFrame("F");
+		JFrame f = new JFrame("Rotating Shape");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setSize(frameW, frameH);
+		f.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		addComponents(f.getContentPane());
 		f.setVisible(true);
-		f.setTitle("Rotating Shape");
 	}
 
 	public static void main(String[] args) {

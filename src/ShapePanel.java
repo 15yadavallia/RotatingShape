@@ -1,6 +1,5 @@
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,6 @@ public class ShapePanel extends JPanel {
 	private RotatingShape shape;
 	private Color color;
 	private int speed;
-	private Container jfd;
 
 	private Timer timer;
 
@@ -25,15 +23,13 @@ public class ShapePanel extends JPanel {
 		shape = line;
 		this.color = color;
 		this.speed = speed;
-//		this.setPreferredSize(new Dimension(820, 820));
 	}
 
-	public ShapePanel(RotatingShape line){
+	public ShapePanel(Line line){
 		shape = line;
 		color = Color.BLACK;
-		speed = 25;
+		speed = 203;
 		rotate();
-//		this.setPreferredSize(new Dimension(820, 820));
 	}
 
 	public ShapePanel(RegularPolygon polygon, Color color, int speed){
@@ -41,15 +37,11 @@ public class ShapePanel extends JPanel {
 		this.color = color;
 		this.speed = speed;
 	}
-	
-	public void setJFD(Container jfd){
-		this.jfd=jfd;
-	}
 
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
 		color = Color.BLACK;
-		speed = 25;
+		speed = 203;
 	}
 
 	public RotatingShape getShape(){
@@ -85,7 +77,6 @@ public class ShapePanel extends JPanel {
 	}
 
 	public void paintComponent(Graphics g){
-		this.setSize(jfd.getWidth(), jfd.getHeight()-75);
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		g2.setStroke(new BasicStroke(shape.getThickness()));
@@ -123,12 +114,9 @@ public class ShapePanel extends JPanel {
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		RegularPolygon b = new RegularPolygon(20, 50, true, true);
-		Line b = new Line(true, false);
+		RegularPolygon b = new RegularPolygon(20, 50, true, true);
+//		Line b = new Line(true, false);
 		ShapePanel c = new ShapePanel(b);
-		Container d = new Container();
-		d.setSize(frame.getWidth(), frame.getHeight());
-		c.setJFD(d);
 
 		frame.add(c);
 		frame.setVisible(true);
