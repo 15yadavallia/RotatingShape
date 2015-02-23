@@ -4,20 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 
 public class RotatingShapeButtons {
 
 	ShapePanel panel;
+	JPanel buttonPanel;
 
-	public RotatingShapeButtons(ShapePanel p, GridBagConstraints constraints) {
+	public RotatingShapeButtons(ShapePanel p, JPanel button) {
+		buttonPanel = button;
 		panel = p;
+		GridBagConstraints constraints = new GridBagConstraints();
 		JButton b = new JButton("Start/Stop Rotation");
-		constraints.fill = GridBagConstraints.LAST_LINE_START;
+		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.gridx = 0;
-		constraints.gridy = 0;
-		constraints.insets = new Insets(0,0,0,0);	//top, left, bottom, right
-		panel.add(b, constraints);
+		constraints.gridy = 45;
+		constraints.insets = new Insets(670,0,0,0);	//top, left, bottom, right
+		buttonPanel.add(b, constraints);
+		
 		b.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -32,11 +37,10 @@ public class RotatingShapeButtons {
 		});    
 
 		JButton b1 = new JButton("Change Direction");
-		constraints.fill = GridBagConstraints.LAST_LINE_START;
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.insets = new Insets(200,0,0,0);
-		panel.add(b1, constraints);
+		constraints.gridx = 1;
+		constraints.gridy = 45;
+
+		buttonPanel.add(b1, constraints);
 		b1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -49,11 +53,10 @@ public class RotatingShapeButtons {
 		});  
 
 		JButton b2 = new JButton("Change Color");
-		constraints.fill = GridBagConstraints.LAST_LINE_START;
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.insets = new Insets(150,0,0,0);
-		panel.add(b2, constraints);
+		constraints.gridx = 2;
+		constraints.gridy = 45;
+
+		buttonPanel.add(b2, constraints);
 		b2.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -64,11 +67,11 @@ public class RotatingShapeButtons {
 		});  
 		
 		JButton b3 = new JButton("Less Sides");
-		constraints.fill = GridBagConstraints.LAST_LINE_START;
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.insets = new Insets(250,0,0,0);
-		panel.add(b3, constraints);
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		constraints.gridx = 3;
+		constraints.gridy = 45;
+
+		buttonPanel.add(b3, constraints);
 		b3.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)
@@ -89,10 +92,10 @@ public class RotatingShapeButtons {
 		
 		JButton b4 = new JButton("More Sides");
 		constraints.fill = GridBagConstraints.LAST_LINE_START;
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.insets = new Insets(300,0,0,0);
-		panel.add(b4, constraints);
+		constraints.gridx = 4;
+		constraints.gridy = 45;
+
+		buttonPanel.add(b4, constraints);
 		b4.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e)

@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 
 
-public class RegularPolygon extends RotatingShape{
+public class RegularPolygon extends RotatingShape {
 	private int numSides;
 	private double sideLength;
 	

@@ -1,29 +1,48 @@
-import java.awt.Container;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
-public class RotatingShapeSliders{
+public class RotatingShapeSliders {
 
 	ShapePanel panel;
+	JPanel controlPanel;
 	
-	public RotatingShapeSliders(ShapePanel p, GridBagConstraints constraints) {
+	public RotatingShapeSliders(ShapePanel p, JPanel control) {
 		panel = p;
-		final JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 20, 0);
-		constraints.insets = new Insets(0,50,0,50);
-//        speed.setMinorTickSpacing(5);
-//        speed.setMajorTickSpacing(10);
-//        speed.setPaintTicks(true);
-		speed.setPaintLabels(true);
-		panel.add(speed, constraints);
-		speed.addChangeListener(new ChangeListener(){
+		controlPanel = control;
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		
+		// Create speed label
+		JLabel speedLabel = new JLabel("Speed", JLabel.CENTER);
+		speedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		// Set label position
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		
+		// Add speed label component
+		controlPanel.add(speedLabel, constraints);
+		
+		// Create and add slider component below speed label
+		final JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 20, 0);
+		// Set slider position
+		constraints.gridy = 1;
+		//speedSlider.setMinorTickSpacing(5);
+        //speedSlider.setMajorTickSpacing(10);
+        //speedSlider.setPaintTicks(true);
+		//speedSlider.setPaintLabels(true);
+		controlPanel.add(speedSlider, constraints);
+		
+		speedSlider.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
-				if (!speed.getValueIsAdjusting()) {
-			        int newSpeed = speed.getValue();
+				if (!speedSlider.getValueIsAdjusting()) {
+			        int newSpeed = speedSlider.getValue();
 			        panel.setSpeed(23 - newSpeed);
 			        panel.repaint();
 			        System.out.println(panel.getSpeed());
@@ -31,36 +50,64 @@ public class RotatingShapeSliders{
 			}	
 		});
 		
-		final JSlider thickness = new JSlider(JSlider.HORIZONTAL, 1, 21, 11);
-		constraints.insets = new Insets(60,50,0,50);
-//        thickness.setMinorTickSpacing(1);
-//        thickness.setMajorTickSpacing(5);
-//        thickness.setPaintTicks(true);
-		thickness.setPaintLabels(true);
-		panel.add(thickness, constraints);
-		thickness.addChangeListener(new ChangeListener(){
+		
+		// Create thickness label 
+		JLabel thicknessLabel = new JLabel("Thickness", JLabel.CENTER);
+        thicknessLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Set label position
+		constraints.gridx = 2;
+		constraints.gridy = 0;
+		// Add thickness label component
+		controlPanel.add(thicknessLabel, constraints);
+
+		// Create and add thickness slider component
+		final JSlider thicknessSlider = new JSlider(JSlider.HORIZONTAL, 1, 21, 11);
+
+        //thicknessSlider.setMinorTickSpacing(1);
+        //thicknessSlider.setMajorTickSpacing(5);
+        //thicknessSlider.setPaintTicks(true);
+		//thicknessSlider.setPaintLabels(true);
+		// Set slider position
+		constraints.gridy = 1;
+		controlPanel.add(thicknessSlider, constraints);
+		
+		thicknessSlider.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
-				if (!thickness.getValueIsAdjusting()) {
-			        int newThickness = thickness.getValue();
-			        panel.setThickness(newThickness);
+				if (!thicknessSlider.getValueIsAdjusting()) {
+			        int newThickness = thicknessSlider.getValue();
+			        panel.getShape().setThickness(newThickness);
 			        panel.repaint();
 			    }
 			}	
 		});
 		
-		final JSlider sideLength = new JSlider(JSlider.HORIZONTAL, 1, 1000, 500);
-		constraints.insets = new Insets(120,50,0,50);
-//        speed.setMinorTickSpacing(10);
-//        speed.setMajorTickSpacing(20);
-//        speed.setPaintTicks(true);
-		sideLength.setPaintLabels(true);
-		panel.add(sideLength, constraints);
-		sideLength.addChangeListener(new ChangeListener(){
+		// Create Side length label
+		JLabel sideLengthLabel = new JLabel("Side Length", JLabel.CENTER);
+        sideLengthLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Set label position
+		constraints.gridx = 4;
+		constraints.gridy = 0;
+		controlPanel.add(sideLengthLabel, constraints);
+		
+		// Create and add side length slider
+		final JSlider sideLengthSlider = new JSlider(JSlider.HORIZONTAL, 1, 1000, 500);
+		// Set position
+		constraints.gridy = 1;
+		
+        
+        //sideLength.setMinorTickSpacing(10);
+        //sideLength.setMajorTickSpacing(20);
+        //sideLength.setPaintTicks(true);
+		//sideLength.setPaintLabels(true);
+		
+		controlPanel.add(sideLengthSlider, constraints);
+
+		sideLengthSlider.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
-				if(panel.getShape() instanceof RegularPolygon){
+				if (panel.getShape() instanceof RegularPolygon) {
 					RegularPolygon a = (RegularPolygon)panel.getShape();
-					if (!sideLength.getValueIsAdjusting()) {
-						int newLength = sideLength.getValue();
+					if (!sideLengthSlider.getValueIsAdjusting()) {
+						int newLength = sideLengthSlider.getValue();
 						a.setLength(newLength/a.getNumSides());
 						panel.repaint();
 					}

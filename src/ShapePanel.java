@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -18,35 +17,33 @@ public class ShapePanel extends JPanel {
 	private RotatingShape shape;
 	private Color color;
 	private int speed;
-	private int thickness;
+
 	private Timer timer;
 
-	public ShapePanel(Line line, Color color, int speed, int thickness){
+	public ShapePanel(Line line, Color color, int speed){
 		shape = line;
 		this.color = color;
 		this.speed = speed;
-		this.thickness = thickness;
+		this.setPreferredSize(new Dimension(820, 820));
 	}
 
 	public ShapePanel(RotatingShape line){
 		shape = line;
 		color = Color.BLACK;
 		speed = 25;
-		thickness = 11;
+		this.setPreferredSize(new Dimension(820, 820));
 	}
 
-	public ShapePanel(RegularPolygon polygon, Color color, int speed, int thickness){
+	public ShapePanel(RegularPolygon polygon, Color color, int speed){
 		shape = polygon;
 		this.color = color;
 		this.speed = speed;
-		this.thickness = thickness;
 	}
 
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
 		color = Color.BLACK;
 		speed = 25;
-		thickness = 11;
 	}
 
 	public RotatingShape getShape(){
@@ -74,13 +71,6 @@ public class ShapePanel extends JPanel {
 		timer.setDelay(speed);
 	}
 
-	public int getThickness(){
-		return thickness;
-	}
-
-	public void setThickness(int thickness){
-		this.thickness = thickness;
-	}
 
 	public void randomizeShapeColor(){
 		Random r = new Random();
@@ -91,7 +81,7 @@ public class ShapePanel extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke(new BasicStroke(thickness));
+		g2.setStroke(new BasicStroke(shape.getThickness()));
 		g2.setColor(color);
 		if(shape instanceof Line){
 			g2.drawLine(((Line)shape).getX1(this.getWidth(), this.getHeight()), 
