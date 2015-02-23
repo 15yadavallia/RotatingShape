@@ -5,18 +5,16 @@ public abstract class RotatingShape {
 	private boolean isRotating;
 	private boolean clockwise;
 	private final double DELTA_THETA = 0.01;
-	private int thickness;
+	private int thickness = 5;
 	
 	public RotatingShape(boolean isRotating, boolean clockwise){
 		this.isRotating = isRotating;
 		this.clockwise = clockwise;
-		this.thickness = 5;
 	}
 	
 	public RotatingShape(){
 		this.isRotating = false;
 		this.clockwise = true;
-		this.thickness = 5;
 	}
 
 	public double getTheta(){
