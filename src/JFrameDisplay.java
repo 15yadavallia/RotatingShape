@@ -1,7 +1,5 @@
+import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,26 +10,30 @@ public class JFrameDisplay {
 	private static int frameH = 1000;
 
 	public JFrameDisplay() {
-		}
+	}
 	public static void addComponents(Container pane) {
 		Line l = new Line(false, true);
 		RegularPolygon a = new RegularPolygon(60,8,true, false);
 		ShapePanel shape = new ShapePanel(l);
 		JPanel buttons = new JPanel();
 		JPanel sliders = new JPanel();
-		pane.setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.insets = new Insets(900, 0, 0, 0);
+		buttons.setSize(buttons.getWidth(), 25);
+		sliders.setSize(buttons.getWidth(), 25);
+		shape.setJFD(pane);
+//		pane.setLayout(new GridBagLayout());
+//		GridBagConstraints gbc = new GridBagConstraints();
+//		gbc.fill = GridBagConstraints.HORIZONTAL;
+//		gbc.gridx = 0;
+//		gbc.gridy = 0;
 		RotatingShapeButtons b = new RotatingShapeButtons(shape, buttons);
 		RotatingShapeSliders s = new RotatingShapeSliders(shape, sliders);
-		pane.add(buttons, gbc);
-		gbc.insets = new Insets(0, 0, 900, 0);
-		pane.add(sliders, gbc);
-		gbc.insets = new Insets(0, 0, 25, 0);
-		pane.add(shape, gbc);
+		pane.add(buttons, BorderLayout.NORTH);
+//		gbc.gridy=1;
+//		gbc.ipady=40;
+		pane.add(shape, BorderLayout.CENTER);
+//		gbc.gridy=2;
+//		gbc.ipady=0;
+		pane.add(sliders, BorderLayout.SOUTH);
 	}
 
 	private static void createFrame(){
