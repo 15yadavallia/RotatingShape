@@ -43,9 +43,9 @@ public class RegularPolygon extends RotatingShape {
 		return Math.PI-2*Math.PI/numSides;
 	}
 	
-	public int[][] getVertices(ShapePanel panel){
-		int centerX = panel.getWidth()/2;
-		int centerY = panel.getHeight()/2;
+	public int[][] getVertices(int panelWidth, int panelHeight){
+		int centerX = panelWidth/2;
+		int centerY = panelHeight/2;
 		int[][] ret = new int[numSides][2];
 		
 		double radius = sideLength/(2*Math.sin(Math.PI/numSides));

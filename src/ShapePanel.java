@@ -96,7 +96,7 @@ public class ShapePanel extends JPanel {
 					((Line)shape).getY2(this.getWidth(), this.getHeight()));
 		}
 		else if(shape instanceof RegularPolygon){
-			int[][] points = ((RegularPolygon)shape).getVertices(this);
+			int[][] points = ((RegularPolygon)shape).getVertices(this.getWidth(), this.getHeight());
 			for(int i=0;i<((RegularPolygon)shape).getNumSides()-1;i++){
 				g2.drawLine(points[i][0], points[i][1], points[i+1][0], points[i+1][1]);
 			}
