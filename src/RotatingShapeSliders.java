@@ -82,7 +82,7 @@ public class RotatingShapeSliders {
 		});
 		
 		// Create Side length label
-		JLabel sideLengthLabel = new JLabel("Side Length", JLabel.CENTER);
+		JLabel sideLengthLabel = new JLabel("Radius Length", JLabel.CENTER);
         sideLengthLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         // Set label position
 		constraints.gridx = 4;
@@ -110,7 +110,7 @@ public class RotatingShapeSliders {
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					if (!sideLengthSlider.getValueIsAdjusting()) {
 						int newLength = sideLengthSlider.getValue();
-						a.setLength(newLength/a.getNumSides());
+						a.setRadius(newLength/3);
 						panel.repaint();
 					}
 				}

@@ -4,11 +4,12 @@ import javax.swing.JFrame;
 public class RegularPolygon extends RotatingShape {
 	private int numSides;
 	private double sideLength;
+	private double radiusL;
 	
 	public RegularPolygon(int sides, double length, boolean isRotating, boolean clockwise){
 		super(isRotating, clockwise);
 		numSides=sides;
-		sideLength= length;
+		radiusL= length;
 	}
 	
 	/**
@@ -16,6 +17,10 @@ public class RegularPolygon extends RotatingShape {
 	 */
 	public int getNumSides() {
 		return numSides;
+	}
+	
+	public void setRadius(double r){
+		radiusL=r;
 	}
 
 	/**
@@ -43,12 +48,12 @@ public class RegularPolygon extends RotatingShape {
 		int centerY = panelHeight/2;
 		int[][] ret = new int[numSides][2];
 		
-		double radius = sideLength/(2*Math.sin(Math.PI/numSides));
+//		double radius = sideLength/(2*Math.sin(Math.PI/numSides));
 		double thetaDiff = 2*Math.PI/numSides;
 		for(int i=0;i<numSides;i++){
 			double currTheta = getTheta()+i*thetaDiff;
-			ret[i][0]=(int)Math.round(radius*Math.cos(currTheta)+centerX);
-			ret[i][1]=(int)Math.round(radius*Math.sin(currTheta)+centerY);
+			ret[i][0]=(int)Math.round(radiusL*Math.cos(currTheta)+centerX);
+			ret[i][1]=(int)Math.round(radiusL*Math.sin(currTheta)+centerY);
 		}
 		
 		return ret;
