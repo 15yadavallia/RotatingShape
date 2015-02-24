@@ -14,26 +14,16 @@ public class JFrameDisplay {
 	}
 	public static void addComponents(Container pane) {
 		Line l = new Line(false, true);
-//		RegularPolygon a = new RegularPolygon(60,8,true, false);
 		ShapePanel shape = new ShapePanel(l);
 		JPanel buttons = new JPanel();
 		JPanel sliders = new JPanel();
 		buttons.setSize(buttons.getWidth(), 25);
 		sliders.setSize(buttons.getWidth(), 25);
 		shape.setSize(FRAME_WIDTH, FRAME_HEIGHT - 75);
-//		pane.setLayout(new GridBagLayout());
-//		GridBagConstraints gbc = new GridBagConstraints();
-//		gbc.fill = GridBagConstraints.HORIZONTAL;
-//		gbc.gridx = 0;
-//		gbc.gridy = 0;
 		RotatingShapeButtons b = new RotatingShapeButtons(shape, buttons);
 		RotatingShapeSliders s = new RotatingShapeSliders(shape, sliders);
 		pane.add(buttons, BorderLayout.NORTH);
-//		gbc.gridy=1;
-//		gbc.ipady=40;
 		pane.add(shape, BorderLayout.CENTER);
-//		gbc.gridy=2;
-//		gbc.ipady=0;
 		pane.add(sliders, BorderLayout.SOUTH);
 	}
 

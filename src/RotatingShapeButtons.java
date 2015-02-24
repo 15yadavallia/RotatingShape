@@ -20,7 +20,7 @@ public class RotatingShapeButtons {
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.gridx = 0;
 		constraints.gridy = 45;
-		constraints.insets = new Insets(670,0,0,0);	//top, left, bottom, right
+		constraints.insets = new Insets(670,0,0,0);	
 		buttonPanel.add(b, constraints);
 		
 		b.addActionListener(new ActionListener() {

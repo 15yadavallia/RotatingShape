@@ -17,7 +17,6 @@ public class ShapePanel extends JPanel {
 	private Color color;
 	private int speed;
 	private int thickness = 11;
-
 	private Timer timer;
 
 	public ShapePanel(Line line, Color color, int speed){

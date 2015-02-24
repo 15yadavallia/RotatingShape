@@ -18,32 +18,20 @@ public class RotatingShapeSliders {
 		controlPanel = control;
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
-		
-		// Create speed label
 		JLabel speedLabel = new JLabel("Speed", JLabel.CENTER);
 		speedLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		// Set label position
 		constraints.gridx = 0;
 		constraints.gridy = 0;
-		
-		// Add speed label component
 		controlPanel.add(speedLabel, constraints);
 		
-		// Create and add slider component below speed label
 		final JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
-		// Set slider position
 		constraints.gridy = 1;
-		//speedSlider.setMinorTickSpacing(5);
-        //speedSlider.setMajorTickSpacing(10);
-        //speedSlider.setPaintTicks(true);
-		//speedSlider.setPaintLabels(true);
 		controlPanel.add(speedSlider, constraints);
 		
 		speedSlider.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
 				if (!speedSlider.getValueIsAdjusting()) {
 			        int newSpeed = speedSlider.getValue();
-//			        panel.setSpeed(110 - newSpeed);
 			        panel.getShape().setDelta(Math.PI/(5*(110-newSpeed)));
 			        panel.repaint();
 			    }
@@ -62,12 +50,6 @@ public class RotatingShapeSliders {
 
 		// Create and add thickness slider component
 		final JSlider thicknessSlider = new JSlider(JSlider.HORIZONTAL, 1, 21, 11);
-
-        //thicknessSlider.setMinorTickSpacing(1);
-        //thicknessSlider.setMajorTickSpacing(5);
-        //thicknessSlider.setPaintTicks(true);
-		//thicknessSlider.setPaintLabels(true);
-		// Set slider position
 		constraints.gridy = 1;
 		controlPanel.add(thicknessSlider, constraints);
 		
@@ -93,12 +75,6 @@ public class RotatingShapeSliders {
 		final JSlider sideLengthSlider = new JSlider(JSlider.HORIZONTAL, 100, 1000, 1000);
 		// Set position
 		constraints.gridy = 1;
-		
-        
-        //sideLength.setMinorTickSpacing(10);
-        //sideLength.setMajorTickSpacing(20);
-        //sideLength.setPaintTicks(true);
-		//sideLength.setPaintLabels(true);
 		
 		controlPanel.add(sideLengthSlider, constraints);
 
