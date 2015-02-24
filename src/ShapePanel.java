@@ -111,7 +111,7 @@ public class ShapePanel extends JPanel {
 			}
 		}
 		ActionListener listener = new UpdateListener();
-		timer = new Timer(10, listener);
+		timer = new Timer(20, listener);
 		timer.start();
 	}
 

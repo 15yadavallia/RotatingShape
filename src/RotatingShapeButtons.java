@@ -80,7 +80,6 @@ public class RotatingShapeButtons {
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					if(a.getNumSides() > 3){
 						a.setNumSides(a.getNumSides()-1);
-						a.setLength(a.getLength()*(a.getNumSides()+1)/a.getNumSides());
 						panel.repaint();
 					}
 					else if(a.getNumSides() == 3){
@@ -110,7 +109,6 @@ public class RotatingShapeButtons {
 				else if(panel.getShape() instanceof RegularPolygon){
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					a.setNumSides(a.getNumSides()+1);
-					a.setLength(a.getLength()*(a.getNumSides()-1)/a.getNumSides());
 					panel.repaint();
 				}
 			}

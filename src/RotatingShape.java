@@ -4,14 +4,14 @@ public abstract class RotatingShape {
 	private double theta;
 	private boolean isRotating;
 	private boolean clockwise;
-	private double DELTA_THETA = 0.01;
+	private double deltaTheta = 0.01;
 	
 	public RotatingShape(boolean isRotating, boolean clockwise){
 		this.isRotating = isRotating;
 		this.clockwise = clockwise;
 	}
 	public void setDelta(double delta){
-		DELTA_THETA = delta;
+		deltaTheta = delta;
 	}
 	public RotatingShape(){
 		this.isRotating = false;
@@ -45,9 +45,9 @@ public abstract class RotatingShape {
 	public void rotate(){
 		if(isRotating){
 			if(clockwise)
-				theta = (theta + DELTA_THETA) % (2*Math.PI);
+				theta = (theta + deltaTheta) % (2*Math.PI);
 			else
-				theta = (theta - DELTA_THETA) % (2*Math.PI);
+				theta = (theta - deltaTheta) % (2*Math.PI);
 		}
 	}
 }

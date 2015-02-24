@@ -3,7 +3,6 @@ import javax.swing.JFrame;
 
 public class RegularPolygon extends RotatingShape {
 	private int numSides;
-	private double sideLength;
 	private double radiusL;
 	
 	public RegularPolygon(int sides, double length, boolean isRotating, boolean clockwise){
@@ -30,25 +29,11 @@ public class RegularPolygon extends RotatingShape {
 		this.numSides = numSides;
 	}
 
-	/**
-	 * @return the length
-	 */
-	public double getLength() {
-		return sideLength;
-	}
-
-	/**
-	 * @param length the length to set
-	 */
-	public void setLength(double length) {
-		this.sideLength = length;
-	}
 	public int[][] getVertices(int panelWidth, int panelHeight){
 		int centerX = panelWidth/2;
 		int centerY = panelHeight/2;
 		int[][] ret = new int[numSides][2];
 		
-//		double radius = sideLength/(2*Math.sin(Math.PI/numSides));
 		double thetaDiff = 2*Math.PI/numSides;
 		for(int i=0;i<numSides;i++){
 			double currTheta = getTheta()+i*thetaDiff;
