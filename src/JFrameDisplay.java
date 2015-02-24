@@ -41,7 +41,7 @@ public class JFrameDisplay {
 		JFrame f = new JFrame("Rotating Shape");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		f.setMinimumSize(new Dimension(808,200));
+		f.setMinimumSize(new Dimension(808,500));
 		addComponents(f.getContentPane());
 		f.setVisible(true);
 	}

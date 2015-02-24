@@ -89,7 +89,7 @@ public class RotatingShapeSliders {
 		controlPanel.add(sideLengthLabel, constraints);
 		
 		// Create and add side length slider
-		final JSlider sideLengthSlider = new JSlider(JSlider.HORIZONTAL, 1, 1000, 1000);
+		final JSlider sideLengthSlider = new JSlider(JSlider.HORIZONTAL, 100, 1000, 1000);
 		// Set position
 		constraints.gridy = 1;
 		
