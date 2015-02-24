@@ -30,7 +30,7 @@ public class RotatingShapeSliders {
 		controlPanel.add(speedLabel, constraints);
 		
 		// Create and add slider component below speed label
-		final JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 50, 0);
+		final JSlider speedSlider = new JSlider(JSlider.HORIZONTAL, 0, 100, 0);
 		// Set slider position
 		constraints.gridy = 1;
 		//speedSlider.setMinorTickSpacing(5);
@@ -43,7 +43,8 @@ public class RotatingShapeSliders {
 			public void stateChanged(ChangeEvent e) {
 				if (!speedSlider.getValueIsAdjusting()) {
 			        int newSpeed = speedSlider.getValue();
-			        panel.setSpeed(110 - 2 * newSpeed);
+//			        panel.setSpeed(110 - newSpeed);
+			        panel.getShape().setDelta(Math.PI/(5*(110-newSpeed)));
 			        panel.repaint();
 			    }
 			}	

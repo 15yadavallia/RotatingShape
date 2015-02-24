@@ -38,11 +38,6 @@ public class RegularPolygon extends RotatingShape {
 	public void setLength(double length) {
 		this.sideLength = length;
 	}
-
-	public double interiorAngle(){
-		return Math.PI-2*Math.PI/numSides;
-	}
-	
 	public int[][] getVertices(int panelWidth, int panelHeight){
 		int centerX = panelWidth/2;
 		int centerY = panelHeight/2;
