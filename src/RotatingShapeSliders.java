@@ -74,7 +74,7 @@ public class RotatingShapeSliders {
 			public void stateChanged(ChangeEvent e) {
 				if (!thicknessSlider.getValueIsAdjusting()) {
 			        int newThickness = thicknessSlider.getValue();
-			        panel.getShape().setThickness(newThickness);
+			        panel.setThickness(newThickness);
 			        panel.repaint();
 			    }
 			}	
@@ -103,6 +103,8 @@ public class RotatingShapeSliders {
 
 		sideLengthSlider.addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
+				if(panel.getShape() instanceof Line)
+					sideLengthSlider.setValue(1000);
 				if (panel.getShape() instanceof RegularPolygon) {
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					if (!sideLengthSlider.getValueIsAdjusting()) {

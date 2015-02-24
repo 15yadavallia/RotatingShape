@@ -10,27 +10,27 @@ public class Line extends RotatingShape {
 	}
 	
 	public int getX1(int panelWidth, int panelHeight){
-			return (int)(-getRadius(panelWidth, panelHeight) * Math.cos(getTheta()) + panelWidth/2);
+		return (int)(-getRadius(panelWidth, panelHeight) * Math.cos(getTheta()) + panelWidth/2);
 	}
 	
 	public int getX2(int panelWidth, int panelHeight){
-			return (int)(getRadius(panelWidth, panelHeight) * Math.cos(getTheta()) + panelWidth/2);
+		return (int)(getRadius(panelWidth, panelHeight) * Math.cos(getTheta()) + panelWidth/2);
 	}
 	
 	public int getY1(int panelWidth, int panelHeight){
-			return (int)(-getRadius(panelWidth, panelHeight) * Math.sin(getTheta()) + panelHeight/2);
+		return (int)(-getRadius(panelWidth, panelHeight) * Math.sin(getTheta()) + panelHeight/2);
 	}
 	
 	public int getY2(int panelWidth, int panelHeight){
-			return (int)(getRadius(panelWidth, panelHeight) * Math.sin(getTheta()) + panelHeight/2);
+		return (int)(getRadius(panelWidth, panelHeight) * Math.sin(getTheta()) + panelHeight/2);
 	}
 	
 	public static void main(String[] args){
 		Line b = new Line(true, true);
 		ShapePanel a = new ShapePanel(b);
 		a.setSize(500, 500);
-//		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
+		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
 		b.setTheta(2);
-//		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
+		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));
 	}
 }

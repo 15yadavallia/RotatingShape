@@ -16,6 +16,7 @@ public class ShapePanel extends JPanel {
 	private RotatingShape shape;
 	private Color color;
 	private int speed;
+	private int thickness = 11;
 
 	private Timer timer;
 
@@ -69,7 +70,14 @@ public class ShapePanel extends JPanel {
 		timer.setDelay(speed);
 	}
 
+	public int getThickness(){
+		return thickness;
+	}
 
+	public void setThickness(int thickness){
+		this.thickness = thickness;
+	}
+	
 	public void randomizeShapeColor(){
 		Random r = new Random();
 		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
@@ -79,7 +87,7 @@ public class ShapePanel extends JPanel {
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setStroke(new BasicStroke(shape.getThickness()));
+		g2.setStroke(new BasicStroke(thickness));
 		g2.setColor(color);
 		if(shape instanceof Line){
 			g2.drawLine(((Line)shape).getX1(this.getWidth(), this.getHeight()), 
@@ -106,9 +114,7 @@ public class ShapePanel extends JPanel {
 		ActionListener listener = new UpdateListener();
 		timer = new Timer(speed, listener);
 		timer.start();
-
 	}
-
 
 	public static void main(String[] args){
 		JFrame frame = new JFrame();

@@ -84,7 +84,9 @@ public class RotatingShapeButtons {
 						panel.repaint();
 					}
 					else if(a.getNumSides() == 3){
+						double theta = panel.getShape().getTheta();
 						panel.setShape(new Line(panel.getShape().isRotating(), panel.getShape().getClockwise()));
+						panel.getShape().setTheta(theta);
 						panel.repaint();
 					}	
 				}
