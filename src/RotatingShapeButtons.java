@@ -84,8 +84,10 @@ public class RotatingShapeButtons {
 					}
 					else if(a.getNumSides() == 3){
 						double theta = panel.getShape().getTheta();
+						double delta = panel.getShape().getDelta();
 						panel.setShape(new Line(panel.getShape().isRotating(), panel.getShape().getClockwise()));
 						panel.getShape().setTheta(theta);
+						panel.getShape().setDelta(delta);
 						panel.repaint();
 					}	
 				}
@@ -103,7 +105,11 @@ public class RotatingShapeButtons {
 			public void actionPerformed(ActionEvent e)
 			{
 				if(panel.getShape() instanceof Line){
-					panel.setShape(new RegularPolygon(3, 1000/3, panel.getShape().isRotating(), panel.getShape().getClockwise()));
+					double theta = panel.getShape().getTheta();
+					double delta = panel.getShape().getDelta();
+					panel.setShape(new RegularPolygon(3, 1000/4, panel.getShape().isRotating(), panel.getShape().getClockwise()));
+					panel.getShape().setTheta(theta);
+					panel.getShape().setDelta(delta);
 					panel.repaint();
 				}
 				else if(panel.getShape() instanceof RegularPolygon){

@@ -12,6 +12,7 @@ public class Display {
 
 	public Display() {
 	}
+	
 	public static void addComponents(Container pane) {
 		Line l = new Line(false, true);
 		ShapePanel shape = new ShapePanel(l);
@@ -31,7 +32,7 @@ public class Display {
 		JFrame f = new JFrame("Rotating Shape");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-		f.setMinimumSize(new Dimension(808,500));
+		f.setMinimumSize(new Dimension(825,500));
 		addComponents(f.getContentPane());
 		f.setVisible(true);
 	}

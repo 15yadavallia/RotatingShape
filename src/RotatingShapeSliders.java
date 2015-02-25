@@ -32,7 +32,7 @@ public class RotatingShapeSliders {
 			public void stateChanged(ChangeEvent e) {
 				if (!speedSlider.getValueIsAdjusting()) {
 			        int newSpeed = speedSlider.getValue();
-			        panel.getShape().setDelta(Math.PI/(5*(110-newSpeed)));
+			        panel.getShape().setDelta(Math.PI/(5*(130-newSpeed)));
 			        panel.repaint();
 			    }
 			}	
@@ -86,7 +86,7 @@ public class RotatingShapeSliders {
 					RegularPolygon a = (RegularPolygon)panel.getShape();
 					if (!sideLengthSlider.getValueIsAdjusting()) {
 						int newLength = sideLengthSlider.getValue();
-						a.setRadius(newLength/3);
+						a.setRadius(newLength/4);
 						panel.repaint();
 					}
 				}
