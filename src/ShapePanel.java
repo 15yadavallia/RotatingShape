@@ -14,34 +14,28 @@ import javax.swing.Timer;
 public class ShapePanel extends JPanel {
 
 	private RotatingShape shape;
-	private Color color;
-	private int speed;
+	private Color color = Color.BLACK;
 	private int thickness = 11;
-	private Timer timer;
 
-	public ShapePanel(Line line, Color color, int speed){
+	public ShapePanel(Line line, Color color, int thickness){
 		shape = line;
 		this.color = color;
-		this.speed = speed;
+		this.thickness = thickness;
 	}
 
 	public ShapePanel(Line line){
 		shape = line;
-		color = Color.BLACK;
-		speed = 110;
 		rotate();
 	}
 
-	public ShapePanel(RegularPolygon polygon, Color color, int speed){
+	public ShapePanel(RegularPolygon polygon, Color color, int thickness){
 		shape = polygon;
 		this.color = color;
-		this.speed = speed;
+		this.thickness = thickness;
 	}
 
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
-		color = Color.BLACK;
-		speed = 110;
 	}
 
 	public RotatingShape getShape(){
@@ -58,15 +52,6 @@ public class ShapePanel extends JPanel {
 
 	public void setColor(Color c){
 		color = c;
-	}
-
-	public int getSpeed(){
-		return speed;
-	}
-
-	public void setSpeed(int speed){
-		this.speed = speed;
-		timer.setDelay(speed);
 	}
 
 	public int getThickness(){
@@ -111,7 +96,7 @@ public class ShapePanel extends JPanel {
 			}
 		}
 		ActionListener listener = new UpdateListener();
-		timer = new Timer(25, listener);
+		Timer timer = new Timer(25, listener);
 		timer.start();
 	}
 

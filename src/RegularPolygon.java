@@ -44,7 +44,6 @@ public class RegularPolygon extends RotatingShape {
 			ret[i][0]=(int)Math.round(radiusL*Math.cos(currTheta)+centerX);
 			ret[i][1]=(int)Math.round(radiusL*Math.sin(currTheta)+centerY);
 		}
-		
 		return ret;
 	}
 	
