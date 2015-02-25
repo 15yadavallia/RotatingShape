@@ -1,8 +1,8 @@
 
 public class Line extends RotatingShape {
 
-	public Line(boolean isRotating, boolean clockwise){
-		super(isRotating, clockwise);
+	public Line(boolean isRotating, boolean clockwise, double theta, double delta){
+		super(isRotating, clockwise, theta, delta);
 	}
 
 	public double getRadius(int panelWidth, int panelHeight){
@@ -26,7 +26,7 @@ public class Line extends RotatingShape {
 	}
 	
 	public static void main(String[] args){
-		Line b = new Line(true, true);
+		Line b = new Line(true, true, 0, 0.01);
 		ShapePanel a = new ShapePanel(b);
 		a.setSize(500, 500);
 		System.out.println(b.getX1(a.getWidth(), a.getHeight()) + " " + b.getX2(a.getWidth(), a.getHeight()));

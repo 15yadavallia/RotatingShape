@@ -5,8 +5,8 @@ public class RegularPolygon extends RotatingShape {
 	private int numSides;
 	private double radiusL;
 	
-	public RegularPolygon(int sides, double length, boolean isRotating, boolean clockwise){
-		super(isRotating, clockwise);
+	public RegularPolygon(int sides, double length, boolean isRotating, boolean clockwise, double theta, double delta){
+		super(isRotating, clockwise, theta, delta);
 		numSides=sides;
 		radiusL= length;
 	}
@@ -18,15 +18,19 @@ public class RegularPolygon extends RotatingShape {
 		return numSides;
 	}
 	
-	public void setRadius(double r){
-		radiusL=r;
-	}
-
 	/**
 	 * @param numSides the numSides to set
 	 */
 	public void setNumSides(int numSides) {
 		this.numSides = numSides;
+	}
+	
+	public double getRadius(){
+		return radiusL;
+	}
+	
+	public void setRadius(double r){
+		radiusL=r;
 	}
 
 	public int[][] getVertices(int panelWidth, int panelHeight){

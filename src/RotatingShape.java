@@ -1,34 +1,16 @@
 
 public abstract class RotatingShape {
 
-	private double theta;
 	private boolean isRotating;
 	private boolean clockwise;
-	private double deltaTheta = Math.PI/650;
+	private double theta;
+	private double deltaTheta;
 	
-	public RotatingShape(boolean isRotating, boolean clockwise){
+	public RotatingShape(boolean isRotating, boolean clockwise, double theta, double delta){
 		this.isRotating = isRotating;
 		this.clockwise = clockwise;
-	}
-	
-	public double getDelta(){
-		return deltaTheta;
-	}
-	
-	public void setDelta(double delta){
-		deltaTheta = delta;
-	}
-	public RotatingShape(){
-		this.isRotating = false;
-		this.clockwise = true;
-	}
-
-	public double getTheta(){
-		return theta;
-	}
-	
-	public void setTheta(double theta){
 		this.theta = theta;
+		this.deltaTheta = delta;
 	}
 	
 	public boolean isRotating(){
@@ -47,6 +29,22 @@ public abstract class RotatingShape {
 		this.clockwise = clockwise;
 	}
 	
+	public double getTheta(){
+		return theta;
+	}
+	
+	public void setTheta(double theta){
+		this.theta = theta;
+	}
+	
+	public double getDelta(){
+		return deltaTheta;
+	}
+	
+	public void setDelta(double delta){
+		deltaTheta = delta;
+	}
+
 	public void rotate(){
 		if(isRotating){
 			if(clockwise)

@@ -14,7 +14,7 @@ public class Display {
 	}
 	
 	public static void addComponents(Container pane) {
-		Line l = new Line(false, true);
+		Line l = new Line(false, true, 0, Math.PI/650);
 		ShapePanel shape = new ShapePanel(l);
 		JPanel buttons = new JPanel();
 		JPanel sliders = new JPanel();

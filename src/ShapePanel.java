@@ -119,7 +119,7 @@ public class ShapePanel extends JPanel {
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		RegularPolygon b = new RegularPolygon(20, 50, true, true);
+		RegularPolygon b = new RegularPolygon(7, 130, true, true, 0, 0.01);
 //		Line b = new Line(true, false);
 		ShapePanel c = new ShapePanel(b);
 
