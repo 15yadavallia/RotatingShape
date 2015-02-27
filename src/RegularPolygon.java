@@ -4,7 +4,15 @@ import javax.swing.JFrame;
 public class RegularPolygon extends RotatingShape {
 	private int numSides;
 	private double radiusL;
-	
+	/**
+	 * creates a regular polygon with the given parameters
+	 * @param sides number of sides
+	 * @param length radius length
+	 * @param isRotating whether the shape is rotating
+	 * @param clockwise whether the shape is going clockwise
+	 * @param theta starting angle
+	 * @param delta starting delta of theta, the amount the polygon will rotate
+	 */
 	public RegularPolygon(int sides, double length, boolean isRotating, boolean clockwise, double theta, double delta){
 		super(isRotating, clockwise, theta, delta);
 		numSides=sides;
@@ -24,15 +32,26 @@ public class RegularPolygon extends RotatingShape {
 	public void setNumSides(int numSides) {
 		this.numSides = numSides;
 	}
-	
+	/**
+	 * 
+	 * @return the radius length
+	 */
 	public double getRadius(){
 		return radiusL;
 	}
-	
+	/**
+	 * 
+	 * @param r the radius to set
+	 */
 	public void setRadius(double r){
 		radiusL=r;
 	}
-
+	/**
+	 * returns a 2D array containing the coordinates of the vertices of the regular polygon given a height and width of the panel on which to draw the regular polygon
+	 * @param panelWidth width of panel
+	 * @param panelHeight height of panel
+	 * @return array of all coordinates
+	 */
 	public int[][] getVertices(int panelWidth, int panelHeight){
 		int centerX = panelWidth/2;
 		int centerY = panelHeight/2;

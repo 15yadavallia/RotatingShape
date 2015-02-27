@@ -16,58 +16,96 @@ public class ShapePanel extends JPanel {
 	private RotatingShape shape;
 	private Color color = Color.BLACK;
 	private int thickness = 11;
-
+	/**
+	 * constructs a ShapePanel with the given parameters
+	 * @param line sets the shape to the specified line
+	 * @param color the color
+	 * @param thickness thickness of line
+	 */
 	public ShapePanel(Line line, Color color, int thickness){
 		shape = line;
 		this.color = color;
 		this.thickness = thickness;
 	}
-
+	/**
+	 * constructs a ShapePanel containing the given line
+	 * @param line the line
+	 */
 	public ShapePanel(Line line){
 		shape = line;
 		rotate();
 	}
-
+	/**
+	 * constructs a Shape Panel with the given parameters
+	 * @param polygon sets shape to the given regular polygon
+	 * @param color the color
+	 * @param thickness the thickness
+	 */
 	public ShapePanel(RegularPolygon polygon, Color color, int thickness){
 		shape = polygon;
 		this.color = color;
 		this.thickness = thickness;
 	}
-
+	/**
+	 * constructs a ShapePanel containing the given Polygon
+	 * @param polygon the polygon
+	 */
 	public ShapePanel(RegularPolygon polygon){
 		shape = polygon;
 	}
-
+	/**
+	 * 
+	 * @return the shape
+	 */
 	public RotatingShape getShape(){
 		return shape;
 	}
-
+/**
+ * 
+ * @param shape the shape to set
+ */
 	public void setShape(RotatingShape shape){
 		this.shape = shape;
 	}
-
+/**
+ * 
+ * @return the color
+ */
 	public Color getColor(){
 		return color;
 	}
-
+/**
+ * 
+ * @param c the color to set
+ */
 	public void setColor(Color c){
 		color = c;
 	}
-
+/**
+ * 
+ * @return the thickness
+ */
 	public int getThickness(){
 		return thickness;
 	}
-
+/**
+ * 
+ * @param thickness the thickness to set
+ */
 	public void setThickness(int thickness){
 		this.thickness = thickness;
 	}
-	
+	/**
+	 * randomizes the color of the shape
+	 */
 	public void randomizeShapeColor(){
 		Random r = new Random();
 		Color color = new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255));
 		setColor(color);
 	}
-
+/**
+ * paints stuff
+ */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
@@ -87,7 +125,9 @@ public class ShapePanel extends JPanel {
 			g2.drawLine(points[0][0], points[0][1], points[points.length-1][0], points[points.length-1][1]);
 		}
 	}
-
+/**
+ * rotates the shape using the shape's deltaTheta
+ */
 	public void rotate(){
 		class UpdateListener implements ActionListener{
 			public void actionPerformed(ActionEvent event){
