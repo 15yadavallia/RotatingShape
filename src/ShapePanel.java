@@ -1,3 +1,20 @@
+/*
+ * Kenny Wang, Anindita Yadavalli, Erica Zhou
+ * Mr. Marshall
+ * Java AP / Period 4
+ * 1 March 2015
+ */
+
+/*
+ * This class constructs a ShapePanel object and contains methods
+ * to draw a RotatingShape on it and rotate this shape
+ * 
+ * Data includes:
+ * 	RotatingShape shape = shape to be drawn on ShapePanel
+ *	Color color = color of the shape
+ *	int thickness = thickness of shape
+ */
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;

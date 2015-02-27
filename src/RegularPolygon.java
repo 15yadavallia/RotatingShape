@@ -1,3 +1,21 @@
+/*
+ * Kenny Wang, Anindita Yadavalli, Erica Zhou
+ * Mr. Marshall
+ * Java AP / Period 4
+ * 1 March 2015
+ */
+
+/*
+ * This class constructs a RegularPolygon object and contains methods 
+ * to rotate it on a ShapePanel object
+ *
+ * This class extends the RotatingShape class
+ * 
+ * Data includes:
+ * 	int sides = number of sides
+ * 	int radiusL = length of radius of polygon
+ */
+
 import javax.swing.JFrame;
 
 
