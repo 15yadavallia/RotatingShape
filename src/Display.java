@@ -1,3 +1,16 @@
+/*
+ * Kenny Wang, Anindita Yadavalli, Erica Zhou
+ * Mr. Marshall
+ * Java AP / Period 4
+ * 1 March 2015
+ *
+ * This class constructs the JFrame and 
+ * displays it as a window. It also adds
+ * the three panels (shape panel, button component panel, 
+ * and slider component panel) to the pane of the JFrame
+ */
+
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -10,8 +23,10 @@ public class Display {
 	private static final int FRAME_WIDTH = 825;
 	private static final int FRAME_HEIGHT = 750;
 
-	public Display() {
-	}
+	/*
+	 * Adds slider, shape, and button panels to content pane of JFrame
+	 * Positions the panels: buttons, shape, sliders (top to bottom)
+	 */
 	
 	public static void addComponents(Container pane) {
 		Line l = new Line(false, true, 0, Math.PI/650);
@@ -28,6 +43,11 @@ public class Display {
 		pane.add(sliders, BorderLayout.SOUTH);
 	}
 
+	/*
+	 * Creates JFrame window 
+	 * Sets size of window and adds content pane to window
+	 */
+	
 	private static void createFrame(){
 		JFrame f = new JFrame("Rotating Shape");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,6 +56,10 @@ public class Display {
 		addComponents(f.getContentPane());
 		f.setVisible(true);
 	}
+	
+	/*
+	 * Creates and runs window
+	 */
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {

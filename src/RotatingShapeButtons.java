@@ -1,3 +1,17 @@
+/*
+ * Kenny Wang, Anindita Yadavalli, Erica Zhou
+ * Mr. Marshall
+ * Java AP / Period 4
+ * 1 March 2015
+ *
+ * This class constructs the JButtons and 
+ * adds them to the component panel.
+ * 
+ * Data includes:
+ * ShapePanel panel = panel of the rotating shape
+ * JPanel buttonPanel = panel of JButtons 
+ */
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -12,37 +26,50 @@ public class RotatingShapeButtons {
 	private ShapePanel panel;
 	private JPanel buttonPanel;
 
+	/*
+	 * Constructs the buttons that control the shape panel
+	 * p is the shape panel to which buttons correspond
+	 * button is the component panel to which the buttons are added
+	 */
+
 	public RotatingShapeButtons(ShapePanel p, JPanel button) {
 		buttonPanel = button;
 		panel = p;
 		GridBagConstraints constraints = new GridBagConstraints();
-		JButton b = new JButton("Start/Stop Rotation");
+		//Button starts and stops rotation of shape
+		final JButton b = new JButton("Start Rotation");
+		//Positions button
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.gridx = 0;
 		constraints.gridy = 45;
 		constraints.insets = new Insets(670,0,0,0);	
 		buttonPanel.add(b, constraints);
-		
-		b.addActionListener(new ActionListener() {
 
+		b.addActionListener(new ActionListener() {
+			//Associate an action with the button event
 			public void actionPerformed(ActionEvent e) {
 				if (panel.getShape().isRotating()){
 					panel.getShape().setRotating(false);
+					b.setText("Start Rotation");
 				}
 				else{
 					panel.getShape().setRotating(true);
 					panel.rotate();
+					b.setText("Stop Rotation");
+
 				}
 			}
 		});    
 
+		//Button changes direction of rotation of shape
 		JButton b1 = new JButton("Change Direction");
+		//Positions button
 		constraints.gridx = 1;
 		constraints.gridy = 45;
 
 		buttonPanel.add(b1, constraints);
 		b1.addActionListener(new ActionListener() {
-
+			//Associate an action with the button event
 			public void actionPerformed(ActionEvent e)
 			{
 				if(panel.getShape().getClockwise())
@@ -50,22 +77,24 @@ public class RotatingShapeButtons {
 				else
 					panel.getShape().setClockwise(true);
 			}
-		});  
+		}); 
 
+		//Button changes color rotating shape
 		JButton b2 = new JButton("Change Color");
 		constraints.gridx = 2;
 		constraints.gridy = 45;
 
 		buttonPanel.add(b2, constraints);
 		b2.addActionListener(new ActionListener() {
-
+			//Associate an action with the button event
 			public void actionPerformed(ActionEvent e)
 			{
 				panel.randomizeShapeColor();
 				panel.repaint();
 			}
 		});  
-		
+
+		//Button decreases number of sides of rotating shape
 		JButton b3 = new JButton("Less Sides");
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.gridx = 3;
@@ -73,7 +102,7 @@ public class RotatingShapeButtons {
 
 		buttonPanel.add(b3, constraints);
 		b3.addActionListener(new ActionListener() {
-
+			//Associate an action with the button event
 			public void actionPerformed(ActionEvent e)
 			{
 				if(panel.getShape() instanceof RegularPolygon){
@@ -90,8 +119,10 @@ public class RotatingShapeButtons {
 				}
 			}
 		});  
-		
+
+		//Button increases number of sides of rotating shape
 		JButton b4 = new JButton("More Sides");
+		//Positions button
 		constraints.fill = GridBagConstraints.LAST_LINE_START;
 		constraints.gridx = 4;
 		constraints.gridy = 45;
@@ -116,6 +147,7 @@ public class RotatingShapeButtons {
 		});  
 	}
 
+	//Gets and returns shape panel 
 	public ShapePanel getShapePanel() {
 		return panel;
 	}
